@@ -13,7 +13,7 @@
     ]
   },
   "scripts": {
-    "build": "pika-pack build"
+    "build": "pika build"
   },
   "dependencies": {
     "@pika/fetch": "^0.1.0"
