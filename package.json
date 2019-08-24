@@ -1,11 +1,15 @@
 {
   "name": "pika-pack-template",
   "version": "0.0.1",
-  "main": "pkg/dist-node/index.js",
   "@pika/pack": {
     "pipeline": [
       [
-        "@pika/plugin-ts-standard-pkg"
+        "@pika/plugin-ts-standard-pkg",
+        {
+          "exclude": [
+            "__tests__/**/*"
+          ]
+        }
       ],
       [
         "@pika/plugin-build-node"
