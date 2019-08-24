@@ -1,0 +1,9 @@
+include:
+  - project: 'dropLoop/ci-templates'
+    ref: master
+    file: 'node/pika-publish.yml'
+
+include:
+  - project: 'dropLoop/ci-templates'
+    ref: master
+    file: 'node/dependencies.yml'
