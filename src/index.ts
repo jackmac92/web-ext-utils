@@ -1,3 +1,4 @@
+import fetch from '@pika/fetch';
 import rollupCommonJs from 'rollup-plugin-commonjs';
 import rollupJson from 'rollup-plugin-json';
 import rollupNodeResolve from 'rollup-plugin-node-resolve';
@@ -35,6 +36,10 @@ export function manifest(manifest, {options}: BuilderOptions) {
       manifest[options.entrypoint] = 'dist-web/index.bundled.js';
     }
   }
+}
+
+export function requester() {
+  fetch('google.com')
 }
 
 export async function build({out, options, reporter}: BuilderOptions): Promise<void> {
