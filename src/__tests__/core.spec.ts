@@ -1,7 +1,8 @@
-import { mqttHostEncompassesOther, MqttHandler } from '../index'
+import hassClientFactory from '../index'
 
-describe('Mqtt Utils utility functions', () => {
-  describe('mqtt host comparison', () => {
-    it('')
-  })
-})
+describe('client factory', () => {
+    it('return a function you can call ', () => {
+        const fn = hassClientFactory('http://localhost', 'sometoken')
+        fn._request('POST', '/service')
+    });
+});

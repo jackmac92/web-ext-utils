@@ -1,6 +1,6 @@
 {
-  "name": "mqtt-utils",
-  "version": "0.1.0",
+  "name": "pika-pack-template",
+  "version": "0.0.1",
   "@pika/pack": {
     "pipeline": [
       [
@@ -31,7 +31,7 @@
     "build": "pika build"
   },
   "dependencies": {
-    "mqtt": "^3.0.0"
+    "@pika/fetch": "^0.1.0"
   },
   "devDependencies": {
     "@pika/pack": "^0.5.0",
