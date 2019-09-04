@@ -1,28 +1,8 @@
-import fetch from '@pika/fetch';
+import fetch from '@pika/fetch'
 
-export default function hassClientFactory(host: string, authToken: string) {
-  const request = (method, path: string, data = {}) => {
-    const body = (() => {
-      if (method === "GET" || method === "HEAD") {
-        return null
-      }
-      return JSON.stringify(data)
-    })()
-    return fetch(
-      `${host}/api/${path}`,
-      {
-        method,
-        body,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${authToken}`
-        }
-      }
-    )
-  }
-
+export default function hoozieWutzit(watevr) {
   return {
-    _request: request,
+    doAFetch: () => fetch('https://google.com'),
+    howdy: () => console.log('hello ', watevr)
   }
 }

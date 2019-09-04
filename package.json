@@ -22,12 +22,10 @@
       ]
     ]
   },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node"
-  },
+  "pre-commit": "check-commit",
   "scripts": {
     "test": "jest",
+    "check-commit": "lint-staged && tsc && jest --changedSince=HEAD",
     "build": "pika build"
   },
   "dependencies": {
@@ -41,9 +39,28 @@
     "@pika/plugin-ts-standard-pkg": "^0.6.0",
     "@pika/types": "^0.6.0",
     "@types/jest": "^24.0.18",
-    "@types/node": "^10.12.18",
+    "@types/node": "^12.7.4",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "eslint": "^6.3.0",
     "jest": "^24.9.0",
+    "lint-staged": "^9.2.5",
+    "pre-commit": "^1.2.2",
     "ts-jest": "^24.0.2",
     "typescript": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ]
   }
 }
