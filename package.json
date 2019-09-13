@@ -32,6 +32,7 @@
     "@pika/fetch": "^0.1.0"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^8.1.0",
     "@pika/pack": "^0.5.0",
     "@pika/plugin-build-deno": "^0.6.0",
     "@pika/plugin-build-node": "^0.6.0",
@@ -42,6 +43,7 @@
     "@types/node": "^12.7.4",
     "@typescript-eslint/eslint-plugin": "^2.1.0",
     "@typescript-eslint/parser": "^2.1.0",
+    "commitlint": "^8.1.0",
     "eslint": "^6.3.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.2.5",
@@ -61,6 +63,11 @@
     "*.css": [
       "stylelint --fix",
       "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   }
 }
