@@ -1,4 +1,3 @@
-import { Tabs } from '@types/chrome'
 import { browser } from 'webextension-polyfill-ts'
 
 const defaultCreateMenuOptions = {
@@ -20,7 +19,7 @@ export const createContextMenu = (
       id: itemId
     },
     () => {
-      const clickListener = (clickedItemInfo, tab: Tabs.Tab) => {
+      const clickListener = (clickedItemInfo, tab: any) => {
         if (clickedItemInfo.menuItemId === itemId) {
           handler(clickedItemInfo, tab)
           if (options.singleUse) {

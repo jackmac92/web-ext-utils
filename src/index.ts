@@ -5,9 +5,10 @@ type locateElementHandler = () => any
 
 const MAX_ATTEMPTS = 20
 
-const comPort = browser.runtime.connect()
-
-const elementLocated = (el: any, validator: validationHandler = () => true) => {
+export const elementLocated = (
+  el: any,
+  validator: validationHandler = () => true
+) => {
   if (el === undefined) {
     return false
   }
@@ -26,6 +27,7 @@ export const scrapeInfo = (
   locator: locateElementHandler,
   validator: validationHandler
 ) => {
+  const comPort = browser.runtime.connect()
   return new Promise((resolve, reject) => {
     let element: any
     let attempts = 0
@@ -59,12 +61,16 @@ export const whenPageReady = (action: scrapeHandler, urlSelector = /./) => {
   }, 10)
 }
 
-comPort.onMessage.addListener(m => {
-  console.log(`Inject received msg ${m}`)
-  // get branchInfo, open locally, allow for changes to be saved to git patch and sent over to author
-})
+export const setupRuntimeCommunicationListener = (handler: Function) => {
+  const comPort = browser.runtime.connect()
+  comPort.onMessage.addListener(m => {
+    console.log(`Inject received msg ${m}`)
+    handler(m)
+    // get branchInfo, open locally, allow for changes to be saved to git patch and sent over to author
+  })
+}
 
-const awaitTabClosing = async (targetTabId, msTimeout = 60000) =>
+export const awaitTabClosing = async (targetTabId, msTimeout = 60000) =>
   new Promise((resolve, reject) => {
     const timeout = setTimeout(() => reject('timeout'), msTimeout)
     const tmpHandler = (tabId, _info) => {
@@ -76,5 +82,3 @@ const awaitTabClosing = async (targetTabId, msTimeout = 60000) =>
     }
     browser.tabs.onRemoved.addListener(tmpHandler)
   })
-
-export default awaitTabClosing

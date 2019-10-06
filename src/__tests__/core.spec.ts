@@ -1,7 +1,9 @@
-import { mqttHostEncompassesOther, MqttHandler } from '../index'
+import { elementLocated } from '../index'
 
-describe('Mqtt Utils utility functions', () => {
-  describe('mqtt host comparison', () => {
-    it('')
+jest.mock('webextension-polyfill-ts')
+
+describe('client factory', () => {
+  it('return a function you can call ', () => {
+    expect(() => elementLocated(undefined)).not.toThrowError()
   })
 })

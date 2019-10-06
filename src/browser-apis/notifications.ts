@@ -17,7 +17,7 @@ export const textNotification = (title, subTitle, action = logProperty) => {
     .then(createId => {
       const handler = (id: string) => {
         if (id === createId) {
-          action()
+          action(null)
           browser.notifications.clear(id)
           browser.notifications.onClicked.removeListener(handler)
         }
