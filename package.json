@@ -1,5 +1,5 @@
 {
-  "name": "pika-pack-template",
+  "name": "web-ext-utils",
   "version": "1.0.1",
   "@pika/pack": {
     "pipeline": [
