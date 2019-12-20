@@ -1,5 +1,5 @@
 {
-  "name": "web-ext-utils",
+  "name": "browser-ext-utilz",
   "version": "1.0.1",
   "@pika/pack": {
     "pipeline": [
