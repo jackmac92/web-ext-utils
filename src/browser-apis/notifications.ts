@@ -1,23 +1,42 @@
 import { browser } from 'webextension-polyfill-ts'
 
-const logProperty = (el: any) => console.log(el)
+const logProperty = (el?: any) => console.log(el)
 
 interface NotificationReq {
   readonly action?: string
+}
+
+const manifestIcons = browser.runtime.getManifest()['icons']
+const biggestIconSz = Object.values(manifestIcons)
+  .map(j => parseInt(j, 0))
+  .sort()
+  .reverse()[0]
+
+const biggestIcon = browser.runtime.getURL(manifestIcons[biggestIconSz])
+
+let notificationIconURL = biggestIcon
+
+export const updateNotificationIconPath = (v: string, fromInternal = true) => {
+  // COULDDO check if image at URL is valid before setting
+  if (fromInternal) {
+    notificationIconURL = browser.runtime.getURL(v)
+  } else {
+    notificationIconURL = v
+  }
 }
 
 export const textNotification = (title, subTitle, action = logProperty) => {
   browser.notifications
     .create({
       title,
-      iconUrl: browser.runtime.getURL('icons/icon-small.png'),
+      iconUrl: notificationIconURL,
       message: subTitle,
       type: 'basic'
     })
     .then(createId => {
       const handler = (id: string) => {
         if (id === createId) {
-          action(null)
+          action()
           browser.notifications.clear(id)
           browser.notifications.onClicked.removeListener(handler)
         }
@@ -25,34 +44,4 @@ export const textNotification = (title, subTitle, action = logProperty) => {
       browser.notifications.onClicked.addListener(handler)
     })
 }
-
-export const __notifier = (m: NotificationReq, action = logProperty) => {
-  let title: string
-  let subTitle: string
-  switch (m.action) {
-    case 'screenshotHandler':
-      title = 'Found Screenshot for test'
-      subTitle = 'Click to download'
-      break
-    default:
-      title = 'Found something'
-      subTitle = 'Click to do stuff'
-  }
-  browser.notifications
-    .create({
-      title,
-      iconUrl: browser.runtime.getURL('icons/icon-small.png'),
-      message: subTitle,
-      type: 'basic'
-    })
-    .then(createId => {
-      const handler = (id: string) => {
-        if (id === createId) {
-          action(m)
-          browser.notifications.clear(id)
-          browser.notifications.onClicked.removeListener(handler)
-        }
-      }
-      browser.notifications.onClicked.addListener(handler)
-    })
-}
+// SHOULDDO click here to switch to tab notificatoin
