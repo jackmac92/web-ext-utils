@@ -2,7 +2,8 @@ import { getLocalStorage, setLocalStorage } from '../browser-apis/storage'
 
 const installIdKey = 'applicationId__unieq'
 
-export const getInstallId = () => getLocalStorage(installIdKey)
+export const getInstallId = () =>
+  getLocalStorage<string, string | null>(installIdKey)
 
 export const ensureInstallId = async () => {
   const localId = await getInstallId()

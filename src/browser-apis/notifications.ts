@@ -8,7 +8,7 @@ interface NotificationReq {
 
 const manifestIcons = browser.runtime.getManifest()['icons']
 const biggestIconSz = Object.values(manifestIcons)
-  .map(j => parseInt(j, 0))
+  .map((j: string) => parseInt(j, 10))
   .sort()
   .reverse()[0]
 

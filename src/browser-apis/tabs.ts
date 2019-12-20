@@ -1,6 +1,6 @@
 import { browser } from 'webextension-polyfill-ts'
 
-export const getActiveTab = (): Promise<Tabs.Tab> =>
+export const getActiveTab = (): Promise<any> =>
   browser.windows
     .getCurrent()
     .then(({ id }) => browser.tabs.query({ active: true, windowId: id }))

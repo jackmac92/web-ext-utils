@@ -15,7 +15,11 @@ const getChildBookmarks = (
         return acc
       }
       const chillen = await browser.bookmarks.getChildren(node.id)
-      return [...acc, ...chillen.reduce(getChildBookmarks, [])]
+      const devouredChillen = await chillen.reduce(
+        getChildBookmarks,
+        Promise.resolve([])
+      )
+      return [...acc, ...devouredChillen]
     }
     return [
       ...acc,
