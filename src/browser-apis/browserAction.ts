@@ -12,20 +12,29 @@ export const setBadgeColor = color =>
     chrome.browserAction.setBadgeBackgroundColor({ color }, r)
   })
 
-const matchIconColorToStatus = async () => {
-  const color = (await getActiveState()) ? '#AA3' : '#F00'
-  return await setBadgeColor(color)
+const matchIconToStatus = async () => {
+  const current = await getActiveState()
+  const color = current ? '#AA3' : '#F00'
+  const badgeText = current ? 'on' : 'off'
+  return Promise.all([
+    new Promise(r => {
+      chrome.browserAction.setBadgeBackgroundColor({ color }, r)
+    }),
+    new Promise(r => {
+      chrome.browserAction.setBadgeText({ text: badgeText }, r)
+    })
+  ])
 }
 
 const toggleActiveState = async () => {
   const current = await getActiveState()
   const newState = !current
   await setActiveState(newState)
-  matchIconColorToStatus()
+  matchIconToStatus()
   return newState
 }
 
-matchIconColorToStatus()
+matchIconToStatus()
 
 export const toggleEventListenerViaBrowserActionFactory = async (
   eventObject,

@@ -1,14 +1,16 @@
 import { browser } from 'webextension-polyfill-ts'
 
 export const getStorage = (storageType: string) => <T, V>(
-  storageKey: T
+  storageKey: T,
+  defaultValue: null | V = null
 ): Promise<V> =>
   new Promise((resolve, reject) => {
     browser.storage[storageType].get([storageKey], result => {
-      if (!result[storageKey]) {
+      const r = result[storageKey]
+      if (defaultValue === null && !r) {
         reject(result)
       }
-      resolve(result[storageKey])
+      resolve(r || defaultValue)
     })
   })
 
