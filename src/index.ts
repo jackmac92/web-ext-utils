@@ -1,2 +1,2 @@
-export * from './helpers/'
-export * from './browser-apis/'
+export * from './helpers/index'
+export * from './browser-apis/index'
