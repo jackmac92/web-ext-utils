@@ -23,10 +23,16 @@ export const setStorage = storageType => (storageKey, value) =>
 
 // const id: <A>(a: A) => A = a => 'string'
 
-export const getLocalStorage: <T, V>(a: T) => Promise<V> = getStorage('local')
-export const getLocalStorageBoolean: (a: any) => Promise<boolean> = getStorage(
-  'local'
-)
+export const getLocalStorage: <T, V>(
+  a: T,
+  defaultValue?: V
+) => Promise<V> = getStorage('local')
+
+export const getLocalStorageBoolean: (
+  a: string,
+  defaultValue?: boolean
+) => Promise<boolean> = (a, defaultValue = false) =>
+  getLocalStorage(a, defaultValue)
 
 // const _getLocalStorage = getStorage('local')
 // export const getLocalStorage: <T>(a: T) => Promise<T> = key => {

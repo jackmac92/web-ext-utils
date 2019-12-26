@@ -3,7 +3,7 @@ import { getLocalStorageBoolean, setLocalStorage } from './storage'
 const SINGLETON_LOCAL_STORAGE_KEY = 'browserActionInUse'
 const LOCAL_STORAGE_KEY = 'browserActionStatus'
 
-const getActiveState = () => getLocalStorageBoolean(LOCAL_STORAGE_KEY)
+const getActiveState = () => getLocalStorageBoolean(LOCAL_STORAGE_KEY, false)
 const setActiveState = val => setLocalStorage(LOCAL_STORAGE_KEY, val)
 
 // COULDDO check if below arg is rgba and pass it differently (this assumes you know it needs to be a hex code)

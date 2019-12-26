@@ -6,7 +6,7 @@ interface NotificationReq {
   readonly action?: string
 }
 
-// TODO investigate if this is a valid way to find icon, got errors before
+// SHOULDDO investigate if this is a valid way to find icon, got errors before`
 // const manifestIcons = browser.runtime.getManifest()['icons']
 // const biggestIconSz = Object.values(manifestIcons)
 //   .map((j: string) => parseInt(j, 10))
