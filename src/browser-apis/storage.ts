@@ -5,7 +5,7 @@ export const getStorage = (storageType: string) => <T, V>(
   defaultValue: null | V = null
 ): Promise<V> =>
   new Promise((resolve, reject) => {
-    browser.storage[storageType].get([storageKey], result => {
+    browser.storage[storageType].get([storageKey]).then(result => {
       const r = result[storageKey]
       if (defaultValue === null && !r) {
         reject(result)
@@ -16,9 +16,9 @@ export const getStorage = (storageType: string) => <T, V>(
 
 export const setStorage = storageType => (storageKey, value) =>
   new Promise(resolve => {
-    browser.storage[storageType].set({ [storageKey]: value }, result =>
-      resolve(result)
-    )
+    browser.storage[storageType]
+      .set({ [storageKey]: value })
+      .then(result => resolve(result))
   })
 
 // const id: <A>(a: A) => A = a => 'string'

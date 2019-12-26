@@ -6,15 +6,17 @@ interface NotificationReq {
   readonly action?: string
 }
 
-const manifestIcons = browser.runtime.getManifest()['icons']
-const biggestIconSz = Object.values(manifestIcons)
-  .map((j: string) => parseInt(j, 10))
-  .sort()
-  .reverse()[0]
+// TODO investigate if this is a valid way to find icon, got errors before
+// const manifestIcons = browser.runtime.getManifest()['icons']
+// const biggestIconSz = Object.values(manifestIcons)
+//   .map((j: string) => parseInt(j, 10))
+//   .sort()
+//   .reverse()[0]
 
-const biggestIcon = browser.runtime.getURL(manifestIcons[biggestIconSz])
+// const biggestIcon = browser.runtime.getURL(manifestIcons[biggestIconSz])
 
-let notificationIconURL = biggestIcon
+let notificationIconURL =
+  'https://freeiconshop.com/wp-content/uploads/edd/notification-outline.png'
 
 export const updateNotificationIconPath = (v: string, fromInternal = true) => {
   // COULDDO check if image at URL is valid before setting
