@@ -7,4 +7,4 @@ async function* allTabChanges() {
   }
 }
 
-export default () => fromAsyncIter(allTabChanges())
+export const tabUpdateSource = () => fromAsyncIter(allTabChanges())
