@@ -15,23 +15,23 @@ interface NotificationReq {
 
 // const biggestIcon = browser.runtime.getURL(manifestIcons[biggestIconSz])
 
-let notificationIconURL =
+let notificationIconURL: URL = new URL(
   'https://freeiconshop.com/wp-content/uploads/edd/notification-outline.png'
+)
 
-export const updateNotificationIconPath = (v: string, fromInternal = true) => {
-  // COULDDO check if image at URL is valid before setting
-  if (fromInternal) {
-    notificationIconURL = browser.runtime.getURL(v)
-  } else {
-    notificationIconURL = v
-  }
+export const updateNotificationIconPath = (v: string) => {
+  notificationIconURL = new URL(browser.runtime.getURL(v))
+}
+
+export const updateNotificationIconURL = (v: URL) => {
+  notificationIconURL = v
 }
 
 export const textNotification = (title, subTitle, action = logProperty) => {
   browser.notifications
     .create({
       title,
-      iconUrl: notificationIconURL,
+      iconUrl: notificationIconURL.toString(),
       message: subTitle,
       type: 'basic'
     })
