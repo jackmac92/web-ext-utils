@@ -12,3 +12,12 @@ export const ensureInstallId = async () => {
     await setLocalStorage(installIdKey, result)
   }
 }
+
+export const oneShotEventHandler = eventType =>
+  new Promise(resolve => {
+    const handlerHelper = (...eventArgs) => {
+      resolve(...eventArgs)
+      eventType.removeListener(handlerHelper)
+    }
+    eventType.addListener(handlerHelper)
+  })

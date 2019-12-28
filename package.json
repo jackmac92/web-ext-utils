@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@pika/fetch": "^0.1.0",
+    "callbag-from-async-iter": "^1.0.0",
     "type-fest": "^0.8.1",
     "webextension-polyfill-ts": "^0.9.1"
   },

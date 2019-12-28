@@ -1781,6 +1781,11 @@ cacheable-request@^6.0.0:
     normalize-url "^4.1.0"
     responselike "^1.0.2"
 
+callbag-from-async-iter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/callbag-from-async-iter/-/callbag-from-async-iter-1.0.0.tgz#cc98c6f238db51237fb8a4afa8d1ebb4b500e571"
+  integrity sha512-cG1sq/gOFxsoGTBccZfoADVh1ox0WRsKoSuj8oOql3xY8Q9QAN7f/W0mclAABXrdlvoJmaT6BMgMHdTl0aGhUw==
+
 caller-callsite@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/caller-callsite/-/caller-callsite-2.0.0.tgz#847e0fce0a223750a9a027c54b33731ad3154134"
