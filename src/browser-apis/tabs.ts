@@ -17,3 +17,5 @@ export const withEachTab = async (cb): Promise<any[]> => {
   const tabs = await getALlTabs()
   return Promise.all(tabs.map(cb))
 }
+
+export const reloadTab = (tabId: number) => browser.tabs.reload(tabId)
