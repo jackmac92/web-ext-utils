@@ -1,0 +1,46 @@
+{
+  "name": "browser-ext-utilz",
+  "version": "1.6.1",
+  "files": [
+    "dist-*/",
+    "bin/"
+  ],
+  "pika": true,
+  "sideEffects": false,
+  "dependencies": {
+    "@pika/fetch": "^0.1.0",
+    "@semantic-release/commit-analyzer": "^6.3.3",
+    "@semantic-release/git": "^7.0.18",
+    "@semantic-release/release-notes-generator": "^7.3.5",
+    "callbag-from-async-iter": "^1.0.0",
+    "type-fest": "^0.8.1",
+    "webextension-polyfill-ts": "^0.9.1"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^8.1.0",
+    "@pika/pack": "^0.5.0",
+    "@pika/plugin-build-deno": "^0.6.0",
+    "@pika/plugin-build-node": "^0.6.0",
+    "@pika/plugin-build-web": "^0.6.0",
+    "@pika/plugin-ts-standard-pkg": "^0.6.0",
+    "@pika/types": "^0.6.0",
+    "@types/chrome": "^0.0.88",
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.4",
+    "@typescript-eslint/eslint-plugin": "^2.1.0",
+    "@typescript-eslint/parser": "^2.1.0",
+    "commitlint": "^8.1.0",
+    "eslint": "^6.3.0",
+    "jest": "^24.9.0",
+    "jest-webextension-mock": "^3.5.0",
+    "lint-staged": "^9.2.5",
+    "pre-commit": "^1.2.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.0.0"
+  },
+  "source": "dist-src/index.js",
+  "types": "dist-types/index.d.ts",
+  "main": "dist-node/index.js",
+  "module": "dist-web/index.js",
+  "deno": "dist-deno/index.ts"
+}
