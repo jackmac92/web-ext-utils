@@ -34,8 +34,6 @@ const toggleActiveState = async () => {
   return newState
 }
 
-matchIconToStatus()
-
 export const toggleEventListenerViaBrowserActionFactory = async (
   eventObject,
   handler
@@ -54,6 +52,7 @@ export const toggleEventListenerViaBrowserActionFactory = async (
     }
   }
   chrome.browserAction.onClicked.addListener(thisBrowserActionListener)
+  matchIconToStatus()
   return () => {
     setLocalStorage(SINGLETON_LOCAL_STORAGE_KEY, false)
     chrome.browserAction.onClicked.removeListener(thisBrowserActionListener)
