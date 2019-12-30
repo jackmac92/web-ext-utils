@@ -1,5 +1,5 @@
 import { browser } from 'webextension-polyfill-ts'
-import { oneShotEventHandler } from '../'
+import { oneShotEventHandler } from '../index'
 
 export const waitForDownload = async () =>
   oneShotEventHandler(browser.downloads.onCreated)
