@@ -38,4 +38,7 @@ export const getLocalStorageBoolean: (
 // export const getLocalStorage: <T>(a: T) => Promise<T> = key => {
 //   return _getLocalStorage(key)
 // }
-export const setLocalStorage = setStorage('local')
+export const setLocalStorage: <V>(
+  k: string,
+  v: V
+) => Promise<unknown> = setStorage('local')
