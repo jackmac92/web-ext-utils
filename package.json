@@ -25,6 +25,7 @@
   "pre-commit": "check-commit",
   "scripts": {
     "test": "jest",
+    "lint": "eslint src/**/*s",
     "check-commit": "lint-staged && tsc && jest --changedSince=HEAD",
     "build": "pika build"
   },
