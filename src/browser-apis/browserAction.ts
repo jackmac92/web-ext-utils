@@ -1,3 +1,4 @@
+import { browser } from 'webextension-polyfill-ts'
 import { getLocalStorageBoolean, setLocalStorage } from './storage'
 
 const SINGLETON_LOCAL_STORAGE_KEY = 'browserActionInUse'
@@ -8,21 +9,15 @@ const setActiveState = val => setLocalStorage(LOCAL_STORAGE_KEY, val)
 
 // COULDDO check if below arg is rgba and pass it differently (this assumes you know it needs to be a hex code)
 export const setBadgeColor = color =>
-  new Promise(r => {
-    chrome.browserAction.setBadgeBackgroundColor({ color }, r)
-  })
+  browser.browserAction.setBadgeBackgroundColor({ color })
 
 const matchIconToStatus = async () => {
   const current = await getActiveState()
   const color = current ? '#AA3' : '#F00'
   const badgeText = current ? 'on' : 'off'
   return Promise.all([
-    new Promise(r => {
-      chrome.browserAction.setBadgeBackgroundColor({ color }, r)
-    }),
-    new Promise(r => {
-      chrome.browserAction.setBadgeText({ text: badgeText }, r)
-    })
+    browser.browserAction.setBadgeBackgroundColor({ color }),
+    browser.browserAction.setBadgeText({ text: badgeText })
   ])
 }
 
@@ -51,10 +46,10 @@ export const toggleEventListenerViaBrowserActionFactory = async (
       eventObject.removeListener(handler)
     }
   }
-  chrome.browserAction.onClicked.addListener(thisBrowserActionListener)
+  browser.browserAction.onClicked.addListener(thisBrowserActionListener)
   matchIconToStatus()
   return () => {
     setLocalStorage(SINGLETON_LOCAL_STORAGE_KEY, false)
-    chrome.browserAction.onClicked.removeListener(thisBrowserActionListener)
+    browser.browserAction.onClicked.removeListener(thisBrowserActionListener)
   }
 }

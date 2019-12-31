@@ -1,9 +1,10 @@
+import { browser } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 import fromAsyncIter from 'callbag-from-async-iter'
 import { oneShotEventHandler } from '../helpers/misc'
 
 async function* allTabChanges() {
   while (true) {
-    yield oneShotEventHandler(chrome.tabs.onUpdated)
+    yield oneShotEventHandler(browser.tabs.onUpdated)
   }
 }
 

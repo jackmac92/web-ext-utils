@@ -1,4 +1,4 @@
-import { browser } from 'webextension-polyfill-ts'
+import { browser, Bookmarks } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 
 export const createBookmark = (url: string, title: string) => {
   browser.bookmarks.create({ url, title })
@@ -6,7 +6,7 @@ export const createBookmark = (url: string, title: string) => {
 
 const getChildBookmarks = (
   prom: Promise<any[]>,
-  node: chrome.bookmarks.BookmarkTreeNode
+  node: Bookmarks.BookmarkTreeNode
 ): Promise<any[]> =>
   prom.then(async acc => {
     if (!node.url) {
