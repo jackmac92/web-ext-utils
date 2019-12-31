@@ -14,9 +14,6 @@ include:
   - project: 'dropLoop/ci-templates'
     ref: master
     file: 'node/typescript.yml'
-  - project: 'dropLoop/ci-templates'
-    ref: master
-    file: 'node/core.yml'
 
 stages:
   - zero
