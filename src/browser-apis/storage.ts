@@ -21,8 +21,6 @@ export const setStorage = storageType => (storageKey, value) =>
       .then(result => resolve(result))
   })
 
-// const id: <A>(a: A) => A = a => 'string'
-
 export const getLocalStorage: <T, V>(
   a: T,
   defaultValue?: V
@@ -34,10 +32,6 @@ export const getLocalStorageBoolean: (
 ) => Promise<boolean> = (a, defaultValue = false) =>
   getLocalStorage(a, defaultValue)
 
-// const _getLocalStorage = getStorage('local')
-// export const getLocalStorage: <T>(a: T) => Promise<T> = key => {
-//   return _getLocalStorage(key)
-// }
 export const setLocalStorage: <V>(
   k: string,
   v: V
