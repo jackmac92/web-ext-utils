@@ -22,12 +22,6 @@ const hasPermission = async (
       return true
     }
   } catch (e) {
-    new Array(10).forEach(() => {
-      console.log(
-        'TODO verify that this only errors out when the user is not available'
-      )
-    })
-    console.error(e)
     await pushToLocalList('request_perms_when_ready', perms)
   }
 
