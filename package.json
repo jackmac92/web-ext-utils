@@ -1,6 +1,6 @@
 {
   "name": "browser-ext-utilz",
-  "version": "1.6.5",
+  "version": "1.7.1",
   "@pika/pack": {
     "pipeline": [
       [
