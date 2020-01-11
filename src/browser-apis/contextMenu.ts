@@ -15,7 +15,11 @@ type clickHandler = (c: Menus.OnClickData, t: Tabs.Tab | undefined) => void
 
 export const createContextMenu = (
   menuTitle: string,
-  handler: (i: Menus.OnClickData, t?: Tabs.Tab) => void,
+  handler: (
+    clickInfo: Menus.OnClickData,
+    tab?: Tabs.Tab,
+    removeContextMenuCb?: () => void
+  ) => void,
   options = defaultCreateMenuOptions
 ) => {
   const itemId = `${Math.floor(Math.random() * 1000000000)}`
@@ -27,12 +31,15 @@ export const createContextMenu = (
       id: itemId
     },
     () => {
+      const cleanupContextMenu = () => {
+        browser.contextMenus.remove(itemId)
+        browser.contextMenus.onClicked.removeListener(clickListener)
+      }
       const clickListener: clickHandler = (e, tab) => {
         if (e.menuItemId === itemId) {
-          handler(e, tab)
+          handler(e, tab, cleanupContextMenu)
           if (options.singleUse) {
-            browser.contextMenus.remove(itemId)
-            browser.contextMenus.onClicked.removeListener(clickListener)
+            cleanupContextMenu()
           }
         }
       }
