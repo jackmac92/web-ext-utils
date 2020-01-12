@@ -16,9 +16,9 @@ type clickHandler = (c: Menus.OnClickData, t: Tabs.Tab | undefined) => void
 export const createContextMenu = (
   menuTitle: string,
   handler: (
+    removeContextMenuCb: () => void,
     clickInfo: Menus.OnClickData,
-    tab?: Tabs.Tab,
-    removeContextMenuCb?: () => void
+    tab?: Tabs.Tab
   ) => void,
   options = defaultCreateMenuOptions
 ) => {
@@ -37,7 +37,7 @@ export const createContextMenu = (
       }
       const clickListener: clickHandler = (e, tab) => {
         if (e.menuItemId === itemId) {
-          handler(e, tab, cleanupContextMenu)
+          handler(cleanupContextMenu, e, tab)
           if (options.singleUse) {
             cleanupContextMenu()
           }
