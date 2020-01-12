@@ -2,7 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   testRegex: '(^src.*/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
-  testPathIgnorePatterns: ['/node_modules/', '/lib/'],
+  testPathIgnorePatterns: ['/node_modules/', '/pkg/', '/lib/'],
   setupFiles: ['jest-webextension-mock'],
   globals: {
     // window needs to be set as global so that webextension-polyfill-ts exports the full object
