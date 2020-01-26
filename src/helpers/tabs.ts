@@ -1,10 +1,10 @@
-import { browser } from 'webextension-polyfill-ts'
+import { browser, Tabs } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 import { getActiveTab } from '../browser-apis/tabs'
 
 export const awaitTabClosing = async (targetTabId, msTimeout = 60000) =>
   new Promise((resolve, reject) => {
     const timeout = setTimeout(() => reject('timeout'), msTimeout)
-    const tmpHandler = (tabId, _info) => {
+    const tmpHandler = (tabId: number, _info: Tabs.OnRemovedRemoveInfoType) => {
       if (tabId === targetTabId) {
         clearTimeout(timeout)
         browser.tabs.onRemoved.removeListener(tmpHandler)
