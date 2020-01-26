@@ -1,19 +1,24 @@
 import { browser, Management } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 
-export const listExtensions = async () => {
+export const listExtensions = async (
+  excludeSelf = true
+): Promise<Management.ExtensionInfo[]> => {
   const allInstalledItems = await browser.management.getAll()
-  return allInstalledItems.filter(z => z.type === 'extension')
+  const maybeFilterSelf = await (async () => {
+    if (!excludeSelf) {
+      return () => true
+    }
+    const extUrl = await browser.runtime.getURL('')
+    const selfId = extUrl.replace('chrome-extension://', '').replace('/', '')
+    return z => z.id !== selfId
+  })()
+  return allInstalledItems
+    .filter(z => z.type === 'extension')
+    .filter(z => z.mayDisable)
+    .filter(maybeFilterSelf)
 }
 
 export const disableExtensions = (extList: Management.ExtensionInfo[]) =>
-  Promise.all(
-    extList.map(({ id }) => {
-      browser.management.setEnabled(id, false)
-    })
-  )
+  Promise.all(extList.map(({ id }) => browser.management.setEnabled(id, false)))
 export const enableExtensions = (extList: Management.ExtensionInfo[]) =>
-  Promise.all(
-    extList.map(({ id }) => {
-      browser.management.setEnabled(id, true)
-    })
-  )
+  Promise.all(extList.map(({ id }) => browser.management.setEnabled(id, true)))
