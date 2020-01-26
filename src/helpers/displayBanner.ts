@@ -1,4 +1,4 @@
-import { browser } from 'webextension-polyfill-ts'
+import { browser, Tabs } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 import { getActiveTab } from '../browser-apis/tabs'
 
 const addSelfCleaningBannerToTab = (message: string) => async (
@@ -29,7 +29,6 @@ const addSelfCleaningBannerToTab = (message: string) => async (
 
 export const addBannerToActiveTab = (activityName = 'Unknown Task') => {
   const addBannerToTab = addSelfCleaningBannerToTab(activityName)
-  getActiveTab().then((tab: any) => addBannerToTab(tab.id))
-  const listener = ({ tabId }: any) => addBannerToTab(tabId)
-  browser.tabs.onActivated.addListener(listener)
+  getActiveTab().then((tab: Tabs.Tab) => addBannerToTab(tab.id))
+  browser.tabs.onActivated.addListener(({ tabId }) => addBannerToTab(tabId))
 }

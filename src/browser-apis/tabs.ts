@@ -1,4 +1,4 @@
-import { browser } from 'webextension-polyfill-ts'
+import { browser, Tabs } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 
 export const getActiveTab = (): Promise<any> =>
   browser.windows
@@ -13,9 +13,11 @@ export const getActiveTab = (): Promise<any> =>
 
 const getALlTabs = () => browser.tabs.query({})
 
-export const withEachTab = async (cb): Promise<any[]> => {
-  const tabs = await getALlTabs()
-  return Promise.all(tabs.map(cb))
-}
+export const withEachTab = async <T>(
+  cb: (a: Tabs.Tab) => Promise<T>
+): Promise<T[]> =>
+  getALlTabs()
+    .then(tabs => tabs.map(t => cb(t)))
+    .then(promises => Promise.all(promises))
 
 export const reloadTab = (tabId: number) => browser.tabs.reload(tabId)
