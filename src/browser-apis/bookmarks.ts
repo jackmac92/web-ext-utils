@@ -5,9 +5,9 @@ export const createBookmark = (url: string, title: string) => {
 }
 
 const getChildBookmarks = (
-  prom: Promise<any[]>,
+  prom: Promise<Bookmarks.BookmarkTreeNode[]>,
   node: Bookmarks.BookmarkTreeNode
-): Promise<any[]> =>
+): Promise<Bookmarks.BookmarkTreeNode[]> =>
   prom.then(async acc => {
     if (!node.url) {
       if (!(node.children && node.children.length > 0)) {
@@ -15,28 +15,22 @@ const getChildBookmarks = (
         return acc
       }
       const chillen = await browser.bookmarks.getChildren(node.id)
-      const devouredChillen = await chillen.reduce(
-        getChildBookmarks,
-        Promise.resolve([])
-      )
-      return [...acc, ...devouredChillen]
+      return chillen.reduce(getChildBookmarks, Promise.resolve(acc))
     }
-    return [
-      ...acc,
-      {
-        link: node.url,
-        title: node.title,
-        addedAt: node.dateAdded,
-        groupLastModified: node.dateGroupModified
-      }
-    ]
+    return [...acc, node]
   })
 
 export const exportEverything = async () => {
   const allBookmarks = await browser.bookmarks.getTree()
-  const result = await allBookmarks.reduce(
+  const fullBookmarks = await allBookmarks.reduce(
     getChildBookmarks,
     Promise.resolve([])
   )
+  const result = fullBookmarks.map(node => ({
+    link: node.url,
+    title: node.title,
+    addedAt: node.dateAdded,
+    groupLastModified: node.dateGroupModified
+  }))
   navigator.clipboard.writeText(JSON.stringify(result))
 }
