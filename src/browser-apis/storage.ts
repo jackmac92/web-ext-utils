@@ -25,6 +25,11 @@ export const setStorage = storageType => (
       .then(result => resolve(result))
   })
 
+export const getSyncStorage: <T, V extends JsonValue>(
+  a: T,
+  defaultValue?: V
+) => Promise<V> = getStorage('sync')
+
 export const getLocalStorage: <T, V extends JsonValue>(
   a: T,
   defaultValue?: V
