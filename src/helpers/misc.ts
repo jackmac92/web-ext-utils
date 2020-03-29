@@ -9,7 +9,12 @@ export const ensureInstallId = async (): Promise<string> => {
   let localId = await getInstallId();
   if (!localId || localId.length === 0) {
     localId = (Math.random() * 1000000000000).toString();
-    await setLocalStorage(installIdKey, localId);
+    try {
+      await setLocalStorage(installIdKey, localId);
+    } catch (err) {
+      console.error("Failed to set new installId in local storage");
+      throw Error(err);
+    }
   }
   return localId;
 };
