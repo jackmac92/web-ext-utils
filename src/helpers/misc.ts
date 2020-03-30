@@ -6,7 +6,13 @@ const installIdKey = "applicationId__unieq";
 export const getInstallId = () => getLocalStorage<string, string>(installIdKey);
 
 export const ensureInstallId = async (): Promise<string> => {
-  let localId = await getInstallId();
+  let localId: string;
+  try {
+    localId = await getInstallId();
+  } catch (err) {
+    console.warn("Encountered an error trying to lookup installId", err);
+    localId = "";
+  }
   if (!localId || localId.length === 0) {
     localId = (Math.random() * 1000000000000).toString();
     try {
