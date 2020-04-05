@@ -52,5 +52,9 @@ const addSelfCleaningBannerToTab = (message: string) => async (
 export const addBannerToActiveTab = (activityName = "Unknown Task") => {
   const addBannerToTab = addSelfCleaningBannerToTab(activityName);
   getActiveTab().then((tab: Tabs.Tab) => addBannerToTab(tab.id));
-  browser.tabs.onActivated.addListener(({ tabId }) => addBannerToTab(tabId));
+  return new Promise(resolve =>
+    browser.tabs.onActivated.addListener(({ tabId }) =>
+      resolve(addBannerToTab(tabId))
+    )
+  );
 };
