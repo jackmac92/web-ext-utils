@@ -1,5 +1,6 @@
 import { browser } from "webextension-polyfill-ts";
 import { getLocalStorage, setLocalStorage } from "../browser-apis/storage";
+import { nanoid } from "nanoid";
 
 const installIdKey = "applicationId__unieq";
 
@@ -14,13 +15,8 @@ export const ensureInstallId = async (): Promise<string> => {
     localId = "";
   }
   if (!localId || localId.length === 0) {
-    localId = (Math.random() * 1000000000000).toString();
-    try {
-      await setLocalStorage(installIdKey, localId);
-    } catch (err) {
-      console.error("Failed to set new installId in local storage");
-      throw Error(err);
-    }
+    localId = nanoid();
+    await setLocalStorage(installIdKey, localId);
   }
   return localId;
 };
