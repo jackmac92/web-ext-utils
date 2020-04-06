@@ -49,3 +49,24 @@ export const oneShotEventHandler = (
     };
     eventType.addListener(handlerHelper);
   });
+
+/**
+ * This func is mainly designed to work with downloads.onDeterminingFileName
+ */
+export const oneShotEventHandlerSyncCheck = (
+  eventType,
+  matchesTargetEvent: (...args: any[]) => boolean = () => true
+) =>
+  new Promise((resolve, reject) => {
+    const handlerTimeout = setTimeout(reject, 1000 * 60);
+    const handlerHelper = (...eventArgs: any[]) => {
+      const isCorrectEvent = matchesTargetEvent(...eventArgs);
+      if (isCorrectEvent) {
+        resolve(...eventArgs);
+        clearTimeout(handlerTimeout);
+        eventType.removeListener(handlerHelper);
+        return true;
+      }
+    };
+    eventType.addListener(handlerHelper);
+  });
