@@ -1,15 +1,28 @@
 {
   "name": "browser-ext-utilz",
-  "version": "1.15.0",
-  "files": [
-    "dist-*/",
-    "bin/"
-  ],
-  "pika": true,
-  "sideEffects": false,
+  "version": "v1.15.0",
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg",
+        {
+          "exclude": ["__tests__/**/*"]
+        }
+      ],
+      ["@pika/plugin-build-node"],
+      ["@pika/plugin-build-web"],
+      ["@pika/plugin-build-deno"]
+    ]
+  },
+  "pre-commit": "check-commit",
+  "scripts": {
+    "lint": "eslint src/**/*s",
+    "test": "jest",
+    "check-commit": "lint-staged && tsc && jest --changedSince=HEAD",
+    "build": "pika build"
+  },
   "dependencies": {
     "@pika/fetch": "^0.1.0",
-    "@semantic-release/gitlab-config": "^8.0.0",
     "callbag-from-async-iter": "^1.0.0",
     "nanoid": "^3.0.2",
     "type-fest": "^0.8.1",
@@ -36,9 +49,12 @@
     "ts-jest": "^24.2.0",
     "typescript": "^3.8.3"
   },
-  "source": "dist-src/index.js",
-  "types": "dist-types/index.d.ts",
-  "main": "dist-node/index.js",
-  "module": "dist-web/index.js",
-  "deno": "dist-deno/index.ts"
+  "lint-staged": {
+    "*.ts": ["eslint --fix"],
+    "*.js": ["eslint --fix"],
+    "*.css": ["stylelint --fix"]
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  }
 }
