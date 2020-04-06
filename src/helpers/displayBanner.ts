@@ -9,8 +9,7 @@ const addSelfCleaningBannerToTab = (message: string) => async (
   const bannerUuid = nanoid();
   const waitForResponse = oneShotEventHandler(
     browser.runtime.onMessage,
-    async (message, _sender, _sendResponse) =>
-      message.type === "USER_CONFIRM" && message.uuid === bannerUuid
+    async (message, _sender, _sendResponse) => message.uuid === bannerUuid
   );
 
   await browser.tabs.executeScript(tabId, {
@@ -31,12 +30,20 @@ const addSelfCleaningBannerToTab = (message: string) => async (
   return waitForResponse;
 };
 
-export const addBannerToActiveTab = (activityName = "Unknown Task") => {
+export const addBannerToActiveTab = (
+  activityName = "Unknown Task"
+): Promise<boolean> => {
   const addBannerToTab = addSelfCleaningBannerToTab(activityName);
   getActiveTab().then((tab: Tabs.Tab) => addBannerToTab(tab.id));
   return new Promise(resolve =>
     browser.tabs.onActivated.addListener(({ tabId }) =>
-      resolve(addBannerToTab(tabId))
+      addBannerToTab(tabId)
+        .then((...eventArgs) => {
+          const message: any = eventArgs[0];
+          if (message.type === "USER_CONFIRM") return true;
+          return false;
+        })
+        .then((res: boolean) => resolve(res))
     )
   );
 };
