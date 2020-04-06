@@ -6,12 +6,20 @@
       [
         "@pika/plugin-ts-standard-pkg",
         {
-          "exclude": ["__tests__/**/*"]
+          "exclude": [
+            "__tests__/**/*"
+          ]
         }
       ],
-      ["@pika/plugin-build-node"],
-      ["@pika/plugin-build-web"],
-      ["@pika/plugin-build-deno"]
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-deno"
+      ]
     ]
   },
   "pre-commit": "check-commit",
@@ -47,14 +55,22 @@
     "lint-staged": "^9.5.0",
     "pre-commit": "^1.2.2",
     "ts-jest": "^24.2.0",
-    "typescript": "^3.7.4"
+    "typescript": "^3.8.3"
   },
   "lint-staged": {
-    "*.ts": ["eslint --fix"],
-    "*.js": ["eslint --fix"],
-    "*.css": ["stylelint --fix"]
+    "*.ts": [
+      "eslint --fix"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.css": [
+      "stylelint --fix"
+    ]
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
