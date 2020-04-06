@@ -12,40 +12,22 @@ const addSelfCleaningBannerToTab = (message: string) => async (
     async (message, _sender, _sendResponse) =>
       message.type === "USER_CONFIRM" && message.uuid === bannerUuid
   );
-  // SHOULDDO move the below code to a separate file to be loaded in, probably need to figure out web_accessible_resources, in order to not use chrome.runtime (use browser.runtime)
-  await browser.tabs.executeScript(tabId, {
-    code: `\
-    const banner = document.createElement('div')
-    banner.id = 'browixir-banner'
-    banner.style.width = '100vw'
-    banner.style.height = '8vw'
-    banner.style.position = 'absolute'
-    banner.style.top = 0
-    banner.style.left = 0
-    banner.style.background = 'green'
-    banner.style.color = 'yellow'
-    banner.style.display = 'flex'
-    banner.style['align-items'] = 'center'
-    banner.style['justify-content'] = 'center'
 
-    const copyContainer = document.createElement('span')
-    copyContainer.innerText = '${message}'
-    const confirmButton = document.createElement('button')
-    confirmButton.innerText = 'Yes!'
-    confirmButton.onclick = () => chrome.runtime.sendMessage({ type: 'USER_CONFIRM', uuid: "${bannerUuid}" })
-    const rejectButton = document.createElement('button')
-    rejectButton.innerText = 'Nope'
-    banner.appendChild(copyContainer)
-    banner.appendChild(confirmButton)
-    banner.appendChild(rejectButton)
-    document.body.appendChild(banner)
-    document.addEventListener('visibilitychange', (_e) => {
-        if (document.hidden) {
-          document.body.removeChild(banner)
-        }
-    });
-  `
+  await browser.tabs.executeScript(tabId, {
+    file: browser.runtime.getURL(
+      "/browser-ext-utilz-content-scripts/displayBanner.ts"
+    )
   });
+  const m = JSON.stringify(message);
+  const bid = JSON.stringify(bannerUuid);
+  await browser.tabs
+    .executeScript(tabId, {
+      code: `injectBannerOnPage(${m}, ${bid})`
+    })
+    .then((resultOnEveryPage: any[]) => {
+      // The below is entirely usesless, the real way relies on oneShotEventHandler, but I wanted to test out returns
+      console.log("Received response from page!", resultOnEveryPage);
+    });
   return waitForResponse;
 };
 
