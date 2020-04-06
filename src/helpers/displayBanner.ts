@@ -14,7 +14,7 @@ const addSelfCleaningBannerToTab = (message: string) => async (
 
   await browser.tabs.executeScript(tabId, {
     file: browser.runtime.getURL(
-      "/browser-ext-utilz-content-scripts/displayBanner.ts"
+      "/browser-ext-utilz-content-scripts/displayBanner.js"
     )
   });
   const m = JSON.stringify(message);
