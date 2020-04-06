@@ -1,17 +1,25 @@
 {
   "name": "browser-ext-utilz",
-  "version": "v1.15.0",
+  "version": "v1.9.1",
   "@pika/pack": {
     "pipeline": [
       [
         "@pika/plugin-ts-standard-pkg",
         {
-          "exclude": ["__tests__/**/*"]
+          "exclude": [
+            "__tests__/**/*"
+          ]
         }
       ],
-      ["@pika/plugin-build-node"],
-      ["@pika/plugin-build-web"],
-      ["@pika/plugin-build-deno"]
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-deno"
+      ]
     ]
   },
   "pre-commit": "check-commit",
@@ -50,11 +58,19 @@
     "typescript": "^3.8.3"
   },
   "lint-staged": {
-    "*.ts": ["eslint --fix"],
-    "*.js": ["eslint --fix"],
-    "*.css": ["stylelint --fix"]
+    "*.ts": [
+      "eslint --fix"
+    ],
+    "*.js": [
+      "eslint --fix"
+    ],
+    "*.css": [
+      "stylelint --fix"
+    ]
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
