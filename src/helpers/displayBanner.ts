@@ -44,7 +44,8 @@ const addSelfCleaningBannerToTab = (message: string) => async (
     banner.appendChild(rejectButton);
     console.log('Attaching banner to document');
     document.body.appendChild(banner);
-    console.log('Attached banner to DOM');`
+    console.log('Attached banner to DOM');
+    return "hello world";`
       // document.addEventListener('visibilitychange', (_e) => {
       //     if (document.hidden) {
       //       console.log('Removing banner from DOM')
