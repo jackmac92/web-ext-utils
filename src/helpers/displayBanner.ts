@@ -65,18 +65,9 @@ export const addBannerToActiveTab = (
   const addBannerToTab = addSelfCleaningBannerToTab(activityName);
   return getActiveTab()
     .then((tab: Tabs.Tab) => addBannerToTab(tab.id))
-    .then(
-      () =>
-        new Promise(resolve =>
-          browser.tabs.onActivated.addListener(({ tabId }) =>
-            addBannerToTab(tabId)
-              .then((...eventArgs) => {
-                const message: any = eventArgs[0];
-                if (message.type === "USER_CONFIRM") return true;
-                return false;
-              })
-              .then((res: boolean) => resolve(res))
-          )
-        )
-    );
+    .then((...eventArgs) => {
+      const message: any = eventArgs[0];
+      if (message.type === "USER_CONFIRM") return true;
+      return false;
+    });
 };
