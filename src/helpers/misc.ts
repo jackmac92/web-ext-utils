@@ -1,4 +1,4 @@
-import { browser } from "webextension-polyfill-ts";
+import { browser, Events } from "webextension-polyfill-ts";
 import { getLocalStorage, setLocalStorage } from "../browser-apis/storage";
 import { nanoid } from "nanoid";
 
@@ -25,18 +25,38 @@ export const getApplicationId = () => browser.runtime.id;
 
 const defaultEventMatcher = () => Promise.resolve(true);
 
-export const oneShotEventHandler = (
-  eventType,
-  matchesTargetEvent: (...args: any[]) => Promise<boolean> = defaultEventMatcher
+type EventHandler<T> = T extends Events.Event<infer R> ? R : never;
+
+type CatchallFunc = (...args: any[]) => any;
+interface EventTypeHelper {
+  addListener: Function | CatchallFunc;
+  removeListener: Function;
+}
+export const oneShotEventHandler = <T extends EventTypeHelper>(
+  eventType: T,
+  matchesTargetEvent: (
+    ...eventArgs: T["addListener"] extends (arg: infer R) => void
+      ? R extends (...args: any[]) => any
+        ? Parameters<R>[]
+        : any[]
+      : any[]
+  ) => Promise<boolean> = defaultEventMatcher
 ) =>
   new Promise((resolve, reject) => {
     const handlerTimeout = setTimeout(reject, 1000 * 60);
-    const handlerHelper = (...eventArgs: any[]) => {
+
+    // @ts-ignore
+    const entAddListen = eventType.addListener;
+
+    const handlerHelper = (
+      ...eventArgs: Parameters<typeof matchesTargetEvent>
+    ) => {
       Promise.resolve(matchesTargetEvent(...eventArgs))
         .then(isTheCorrectEvent => {
           if (isTheCorrectEvent) {
             resolve(...eventArgs);
             clearTimeout(handlerTimeout);
+            // @ts-ignore
             eventType.removeListener(handlerHelper);
           }
         })
@@ -47,6 +67,7 @@ export const oneShotEventHandler = (
           );
         });
     };
+    // @ts-ignore
     eventType.addListener(handlerHelper);
   });
 
