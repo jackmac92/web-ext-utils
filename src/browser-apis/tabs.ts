@@ -25,7 +25,7 @@ export const reloadTab = async (tabId: number): Promise<unknown> =>
   browser.tabs.reload(tabId).then(() =>
     oneShotEventHandler(
       browser.tabs.onUpdated,
-      async ([eventTabId, { status }, _tab]) => {
+      async (eventTabId, { status }, _tab) => {
         if (tabId !== eventTabId) return false;
         if (status === "complete") return true;
         return false;

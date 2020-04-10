@@ -37,7 +37,7 @@ export const oneShotEventHandler = <T extends EventTypeHelper>(
   matchesTargetEvent: (
     ...eventArgs: T["addListener"] extends (arg: infer R) => void
       ? R extends (...args: any[]) => any
-        ? Parameters<R>[]
+        ? Parameters<R>
         : any[]
       : any[]
   ) => Promise<boolean> = defaultEventMatcher
