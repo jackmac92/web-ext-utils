@@ -1,4 +1,4 @@
-import { browser, Events } from "webextension-polyfill-ts";
+import { browser } from "webextension-polyfill-ts";
 import { getLocalStorage, setLocalStorage } from "../browser-apis/storage";
 import { nanoid } from "nanoid";
 
@@ -24,8 +24,6 @@ export const ensureInstallId = async (): Promise<string> => {
 export const getApplicationId = () => browser.runtime.id;
 
 const defaultEventMatcher = () => Promise.resolve(true);
-
-type EventHandler<T> = T extends Events.Event<infer R> ? R : never;
 
 type CatchallFunc = (...args: any[]) => any;
 interface EventTypeHelper {
@@ -88,6 +86,7 @@ export const oneShotEventHandlerSyncCheck = (
         eventType.removeListener(handlerHelper);
         return true;
       }
+      return false;
     };
     eventType.addListener(handlerHelper);
   });

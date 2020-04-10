@@ -2,9 +2,6 @@ import { browser } from 'webextension-polyfill-ts'
 
 const logProperty = (el?: any) => console.log(el)
 
-interface NotificationReq {
-  readonly action?: string
-}
 
 // SHOULDDO investigate if this is a valid way to find icon, got errors before`
 // const manifestIcons = browser.runtime.getManifest()['icons']

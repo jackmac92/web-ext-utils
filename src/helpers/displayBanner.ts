@@ -9,7 +9,7 @@ const addSelfCleaningBannerToTab = (message: string) => async (
   const bannerUuid = nanoid();
   const waitForResponse = oneShotEventHandler(
     browser.runtime.onMessage,
-    async (message, _sender, _sendResponse) => message.uuid === bannerUuid
+    async (message, _) => message.uuid === bannerUuid
   );
 
   const m = JSON.stringify(message);
