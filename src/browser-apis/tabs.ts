@@ -1,5 +1,5 @@
 import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
-import { oneShotEventHandler } from "../helpers";
+import { oneShotEventHandler } from "../helpers/index";
 
 export const getActiveTab = (): Promise<Tabs.Tab> =>
   browser.windows
