@@ -1,12 +1,10 @@
 {
   "name": "browser-ext-utilz",
   "version": "v1.9.1",
-  "files": [
-    "dist-*/",
-    "bin/"
-  ],
+  "files": ["dist-*/", "bin/"],
   "pika": true,
   "sideEffects": false,
+  "scripts": { "build": "yarn tsc" },
   "dependencies": {
     "@pika/fetch": "^0.1.0",
     "@semantic-release/gitlab-config": "^8.0.0",
