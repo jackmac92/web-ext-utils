@@ -4,7 +4,7 @@
   "files": ["dist-*/", "bin/"],
   "pika": true,
   "sideEffects": false,
-  "scripts": { "build": "yarn tsc" },
+  "scripts": { "build": "pika build" },
   "dependencies": {
     "@pika/fetch": "^0.1.0",
     "@semantic-release/gitlab-config": "^8.0.0",
