@@ -1,50 +1,55 @@
-import { JsonValue } from 'type-fest' // eslint-disable-line no-unused-vars
-import { browser } from 'webextension-polyfill-ts'
+import { JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
+import { browser } from "webextension-polyfill-ts";
 
-export const getStorage = (storageType: string) => <T, V extends JsonValue>(
+type JsonVal = NonNullable<JsonValue>;
+
+export const getStorage = (storageType: "local" | "sync") => <
+  T extends JsonVal,
+  V extends JsonValue
+>(
   storageKey: T,
   defaultValue: null | V = null
 ): Promise<V> =>
   new Promise((resolve, reject) => {
     browser.storage[storageType].get([storageKey]).then(result => {
-      const r = result[storageKey]
+      const r = result[storageKey.toString()];
       if (defaultValue === null && !r) {
-        reject(result)
+        reject(result);
       }
-      resolve(r || defaultValue)
-    })
-  })
+      resolve(r || defaultValue);
+    });
+  });
 
-export const setStorage = storageType => (
+export const setStorage = (storageType: "local" | "sync") => (
   storageKey: string,
   value: JsonValue
 ) =>
   new Promise(resolve => {
     browser.storage[storageType]
       .set({ [storageKey]: value })
-      .then(result => resolve(result))
-  })
+      .then(result => resolve(result));
+  });
 
-export const getSyncStorage: <T, V extends JsonValue>(
+export const getSyncStorage: <T extends JsonVal, V extends JsonValue>(
   a: T,
   defaultValue?: V
-) => Promise<V> = getStorage('sync')
+) => Promise<V> = getStorage("sync");
 
-export const getLocalStorage: <T, V extends JsonValue>(
+export const getLocalStorage: <T extends JsonVal, V extends JsonValue>(
   a: T,
   defaultValue?: V
-) => Promise<V> = getStorage('local')
+) => Promise<V> = getStorage("local");
 
 export const getLocalStorageBoolean: (
   a: string,
   defaultValue?: boolean
 ) => Promise<boolean> = (a, defaultValue = false) =>
-  getLocalStorage(a, defaultValue)
+  getLocalStorage(a, defaultValue);
 
-export const setLocalStorage: <V extends JsonValue>(
+export const setLocalStorage: (
   k: string,
-  v: V
-) => Promise<unknown> = setStorage('local')
+  v: any | any[]
+) => Promise<unknown> = setStorage("local");
 
 export const pushToLocalList: <T>(
   key: string,
@@ -52,9 +57,9 @@ export const pushToLocalList: <T>(
 ) => Promise<void> = (k, ...vals) =>
   getLocalStorage(k, [])
     .then(existingValues => setLocalStorage(k, [...existingValues, ...vals]))
-    .then(() => Promise.resolve())
+    .then(() => Promise.resolve());
 
 export const popFromLocalList: <T>(key: string) => Promise<T> = k =>
   getLocalStorage(k, []).then(([head, ...tail]) =>
     setLocalStorage(k, tail).then(() => head)
-  )
+  );

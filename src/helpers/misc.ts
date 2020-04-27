@@ -73,7 +73,7 @@ export const oneShotEventHandler = <T extends EventTypeHelper>(
  * This func is mainly designed to work with downloads.onDeterminingFileName
  */
 export const oneShotEventHandlerSyncCheck = (
-  eventType,
+  eventType: any,
   matchesTargetEvent: (...args: any[]) => boolean = () => true
 ) =>
   new Promise((resolve, reject) => {

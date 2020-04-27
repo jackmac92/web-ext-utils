@@ -1,6 +1,6 @@
 import { browser } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
 
-const injectBannerOnPage = (message, bannerUuid) => {
+const injectBannerOnPage = (message: string, bannerUuid: string) => {
   const banner = document.createElement("div");
   banner.id = "browixir-banner";
   banner.style.width = "100vw";
@@ -11,8 +11,8 @@ const injectBannerOnPage = (message, bannerUuid) => {
   banner.style.background = "green";
   banner.style.color = "yellow";
   banner.style.display = "flex";
-  banner.style["align-items"] = "center";
-  banner.style["justify-content"] = "center";
+  // banner.style["align-items"] = "center";
+  // banner.style["justify-content"] = "center";
 
   const copyContainer = document.createElement("span");
   copyContainer.innerText = message;

@@ -1,11 +1,12 @@
-import { browser } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
-import fromAsyncIter from 'callbag-from-async-iter'
-import { oneShotEventHandler } from '../helpers/misc'
+import { browser } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+// @ts-ignore
+import fromAsyncIter from "callbag-from-async-iter";
+import { oneShotEventHandler } from "../helpers/misc";
 
 async function* allTabChanges() {
   while (true) {
-    yield oneShotEventHandler(browser.tabs.onUpdated)
+    yield oneShotEventHandler(browser.tabs.onUpdated);
   }
 }
 
-export const tabUpdateSource = () => fromAsyncIter(allTabChanges())
+export const tabUpdateSource = () => fromAsyncIter(allTabChanges());

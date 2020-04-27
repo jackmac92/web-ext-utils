@@ -24,7 +24,7 @@ export const updateNotificationIconURL = (v: URL) => {
   notificationIconURL = v
 }
 
-export const textNotification = (title, subTitle, action = logProperty) => {
+export const textNotification = (title: string, subTitle: string, action = logProperty) => {
   browser.notifications
     .create({
       title,

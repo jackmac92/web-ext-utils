@@ -65,7 +65,7 @@ export const addBannerToActiveTab = (
 ): Promise<boolean> => {
   const addBannerToTab = addSelfCleaningBannerToTab(activityName);
   return getActiveTab()
-    .then((tab: Tabs.Tab) => addBannerToTab(tab.id))
+    .then((tab: Tabs.Tab) => addBannerToTab(tab.id as number))
     .then((...eventArgs) => {
       const message: any = eventArgs[0];
       if (message.type === "USER_CONFIRM") return true;

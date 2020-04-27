@@ -5,7 +5,7 @@ export const getActiveTab = (): Promise<Tabs.Tab> =>
   browser.windows
     .getCurrent()
     .then(({ id }) => browser.tabs.query({ active: true, windowId: id }))
-    .then(tabs => {
+    .then((tabs: Tabs.Tab[]) => {
       if (!tabs[0]) {
         throw new Error("Could not find an active tab");
       }
