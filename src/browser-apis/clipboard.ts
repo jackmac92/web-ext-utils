@@ -1,3 +1,5 @@
+import { textNotification } from "./notifications";
+
 export function writeToClipboard(newClip: string) {
   return (
     navigator.permissions
@@ -9,5 +11,16 @@ export function writeToClipboard(newClip: string) {
         }
         return Promise.reject("No clipboard access");
       })
+  );
+}
+
+export function promptToCopyViaNotification(
+  message: string,
+  contentToCopy: string
+) {
+  return textNotification(
+    message,
+    "Click this notification to copy it to your clipboard!",
+    () => writeToClipboard(contentToCopy)
   );
 }
