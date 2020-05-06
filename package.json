@@ -1,21 +1,34 @@
 {
   "name": "browser-ext-utilz",
   "version": "v1.9.1",
-  "files": ["dist-*/", "bin/"],
+  "files": [
+    "dist-*/",
+    "bin/"
+  ],
   "pika": true,
   "sideEffects": false,
-  "scripts": { "build": "pika build" },
+  "scripts": {
+    "build": "pika build"
+  },
   "@pika/pack": {
     "pipeline": [
       [
         "@pika/plugin-ts-standard-pkg",
         {
-          "exclude": ["__tests__/**/*"]
+          "exclude": [
+            "__tests__/**/*"
+          ]
         }
       ],
-      ["@pika/plugin-build-node"],
-      ["@pika/plugin-build-web"],
-      ["@pika/plugin-build-deno"]
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-deno"
+      ]
     ]
   },
   "dependencies": {
