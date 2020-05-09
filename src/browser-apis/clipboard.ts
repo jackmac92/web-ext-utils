@@ -1,13 +1,34 @@
 import { textNotification } from "./notifications";
 
-export function writeToClipboard(newClip: string) {
+export function writeToClipboard(newClip: string): Promise<void> {
   return (
     navigator.permissions
       // @ts-ignore
       .query({ name: "clipboard-write" })
       .then((result: { state: string }) => {
         if (result.state == "granted" || result.state == "prompt") {
-          return navigator.clipboard.writeText(newClip);
+          return navigator.clipboard
+            .writeText(newClip)
+            .catch(err => Promise.reject(err));
+        }
+        return Promise.reject("No clipboard access");
+      })
+  );
+}
+
+export function writeToClipboardViaContentScript(
+  newClip: string
+): Promise<boolean> {
+  return (
+    // TODO add tab helper to run contentScript in any tab
+    navigator.permissions
+      // @ts-ignore
+      .query({ name: "clipboard-write" })
+      .then((result: { state: string }) => {
+        if (result.state == "granted" || result.state == "prompt") {
+          return navigator.clipboard
+            .writeText(newClip)
+            .catch(err => Promise.reject(err));
         }
         return Promise.reject("No clipboard access");
       })
