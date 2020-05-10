@@ -1,13 +1,11 @@
 {
   "name": "browser-ext-utilz",
   "version": "v1.9.1",
-  "files": [
-    "dist-*/",
-    "bin/"
-  ],
+  "files": ["dist-*/", "bin/"],
   "pika": true,
   "sideEffects": false,
   "scripts": {
+    "prebuild": "api-extractor run --local",
     "build": "pika build"
   },
   "@pika/pack": {
@@ -15,20 +13,12 @@
       [
         "@pika/plugin-ts-standard-pkg",
         {
-          "exclude": [
-            "__tests__/**/*"
-          ]
+          "exclude": ["__tests__/**/*"]
         }
       ],
-      [
-        "@pika/plugin-build-node"
-      ],
-      [
-        "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-build-deno"
-      ]
+      ["@pika/plugin-build-node"],
+      ["@pika/plugin-build-web"],
+      ["@pika/plugin-build-deno"]
     ]
   },
   "dependencies": {
@@ -41,6 +31,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.2.0",
+    "@microsoft/api-extractor": "^7.8.0",
     "@pika/pack": "^0.5.0",
     "@pika/plugin-build-deno": "^0.8.1",
     "@pika/plugin-build-node": "^0.8.1",
