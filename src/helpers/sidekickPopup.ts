@@ -16,16 +16,13 @@ export const createSidekickWindow = async (
   ) {
     throw Error("Failed to get the dimensions of the current window");
   }
-  const sidekickWidth = Math.ceil(width / 5);
-  await browser.windows.update(id, {
-    width: width - sidekickWidth,
-    left: left + sidekickWidth
-  });
+  const sidekickWidth = Math.min(200, Math.ceil(width / 5));
+  // NOTE can't change the active window dimensions for security reasons
   return browser.windows.create({
     url,
     type: "popup",
-    top,
-    left,
+    top: 0,
+    left: 0,
     height,
     width: sidekickWidth
   });
