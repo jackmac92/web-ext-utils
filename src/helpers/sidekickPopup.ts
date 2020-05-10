@@ -1,6 +1,8 @@
 import { browser, Windows } from "webextension-polyfill-ts";
 
-export default async function(url: string | string[]): Promise<Windows.Window> {
+export const createSidekickWindow = async (
+  url: string | string[]
+): Promise<Windows.Window> => {
   const window: Windows.Window = await browser.windows.getCurrent();
   const { height, width, top, left } = window;
   if (
@@ -24,4 +26,4 @@ export default async function(url: string | string[]): Promise<Windows.Window> {
     height,
     width: sidekickWidth
   });
-}
+};
