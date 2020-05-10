@@ -5,7 +5,8 @@
   "pika": true,
   "sideEffects": false,
   "scripts": {
-    "prebuild": "api-extractor run --local",
+    "run-api-extractor": "api-extractor run --local",
+    "prebuild": "yarn run-api-extractor",
     "build": "pika build"
   },
   "@pika/pack": {
