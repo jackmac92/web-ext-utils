@@ -1,10 +1,8 @@
 import { JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
 import { browser } from "webextension-polyfill-ts";
 
-type JsonVal = NonNullable<JsonValue>;
-
 export const getStorage = (storageType: "local" | "sync") => <
-  T extends JsonVal,
+  T extends NonNullable<JsonValue>,
   V extends JsonValue
 >(
   storageKey: T,
@@ -30,12 +28,18 @@ export const setStorage = (storageType: "local" | "sync") => (
       .then(result => resolve(result));
   });
 
-export const getSyncStorage: <T extends JsonVal, V extends JsonValue>(
+export const getSyncStorage: <
+  T extends NonNullable<JsonValue>,
+  V extends JsonValue
+>(
   a: T,
   defaultValue?: V
 ) => Promise<V> = getStorage("sync");
 
-export const getLocalStorage: <T extends JsonVal, V extends JsonValue>(
+export const getLocalStorage: <
+  T extends NonNullable<JsonValue>,
+  V extends JsonValue
+>(
   a: T,
   defaultValue?: V
 ) => Promise<V> = getStorage("local");

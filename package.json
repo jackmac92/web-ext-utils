@@ -5,6 +5,7 @@
   "pika": true,
   "sideEffects": false,
   "scripts": {
+    "prerun-api-extractor": "yarn tsc",
     "run-api-extractor": "api-extractor run",
     "prebuild": "yarn run-api-extractor",
     "build": "pika build"

@@ -1,0 +1,1708 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.8.0",
+    "schemaVersion": 1003,
+    "oldestForwardsCompatibleVersion": 1001
+  },
+  "kind": "Package",
+  "canonicalReference": "browser-ext-utilz!",
+  "docComment": "",
+  "name": "browser-ext-utilz",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "browser-ext-utilz!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!addBannerToActiveTab:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "addBannerToActiveTab: "
+            },
+            {
+              "kind": "Content",
+              "text": "(activityName?: string) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<boolean>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "addBannerToActiveTab",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!awaitTabClosing:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "awaitTabClosing: "
+            },
+            {
+              "kind": "Content",
+              "text": "(targetTabId: number, msTimeout?: number) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<unknown>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "awaitTabClosing",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!browserSetInterval:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "browserSetInterval: "
+            },
+            {
+              "kind": "Reference",
+              "text": "intervalType",
+              "canonicalReference": "browser-ext-utilz!intervalType:type"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "browserSetInterval",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!browserSetTimeout:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "browserSetTimeout: "
+            },
+            {
+              "kind": "Reference",
+              "text": "intervalType",
+              "canonicalReference": "browser-ext-utilz!intervalType:type"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "browserSetTimeout",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!clearUserDataFromOneWeek:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "clearUserDataFromOneWeek: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "clearUserDataFromOneWeek",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!createBookmark:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "createBookmark: "
+            },
+            {
+              "kind": "Content",
+              "text": "(url: string, title: string) => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "createBookmark",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!createContextMenu:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "createContextMenu: "
+            },
+            {
+              "kind": "Content",
+              "text": "(menuTitle: string, handler: (removeContextMenuCb: () => void, clickInfo: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Menus.OnClickData",
+              "canonicalReference": "webextension-polyfill-ts!Menus.OnClickData:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", tab?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tabs.Tab",
+              "canonicalReference": "webextension-polyfill-ts!Tabs.Tab:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | undefined) => void, options?: {\n    menuOptions: {};\n    singleUse: boolean;\n}) => string | number"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "createContextMenu",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!createSidekickWindow:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "createSidekickWindow: "
+            },
+            {
+              "kind": "Content",
+              "text": "(url: string | string[]) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Windows.Window",
+              "canonicalReference": "webextension-polyfill-ts!Windows.Window:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "createSidekickWindow",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!disableExtensions:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "disableExtensions: "
+            },
+            {
+              "kind": "Content",
+              "text": "(extList: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Management.ExtensionInfo",
+              "canonicalReference": "webextension-polyfill-ts!Management.ExtensionInfo:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "[]) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void[]>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "disableExtensions",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!enableExtensions:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "enableExtensions: "
+            },
+            {
+              "kind": "Content",
+              "text": "(extList: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Management.ExtensionInfo",
+              "canonicalReference": "webextension-polyfill-ts!Management.ExtensionInfo:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "[]) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void[]>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "enableExtensions",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!ensureInstallId:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "ensureInstallId: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<string>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ensureInstallId",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "browser-ext-utilz!EventTypeHelper:interface",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface EventTypeHelper "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "EventTypeHelper",
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "browser-ext-utilz!EventTypeHelper#addListener:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addListener: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Function",
+                  "canonicalReference": "!Function:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | ((...args: any[]) => any)"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "addListener",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "browser-ext-utilz!EventTypeHelper#removeListener:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "removeListener: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Function",
+                  "canonicalReference": "!Function:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "releaseTag": "Public",
+              "name": "removeListener",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!exportEverything:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "exportEverything: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "exportEverything",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!getActiveTab:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getActiveTab: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Tabs.Tab",
+              "canonicalReference": "webextension-polyfill-ts!Tabs.Tab:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "getActiveTab",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!getApplicationId:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getApplicationId: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => string"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "getApplicationId",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!getCookiesFromDomain:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getCookiesFromDomain: "
+            },
+            {
+              "kind": "Content",
+              "text": "(domain: string) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Cookies.Cookie",
+              "canonicalReference": "webextension-polyfill-ts!Cookies.Cookie:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "[]>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "getCookiesFromDomain",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!getInstallId:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getInstallId: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<string>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "getInstallId",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!getLocalStorage:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getLocalStorage: "
+            },
+            {
+              "kind": "Content",
+              "text": "<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "NonNullable",
+              "canonicalReference": "!NonNullable:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonValue",
+              "canonicalReference": "type-fest!JsonValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">, V extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonValue",
+              "canonicalReference": "type-fest!JsonValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">(a: T, defaultValue?: V) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<V>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "getLocalStorage",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 10
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!getLocalStorageBoolean:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getLocalStorageBoolean: "
+            },
+            {
+              "kind": "Content",
+              "text": "(a: string, defaultValue?: boolean) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<boolean>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "getLocalStorageBoolean",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!getStorage:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getStorage: "
+            },
+            {
+              "kind": "Content",
+              "text": "(storageType: \"sync\" | \"local\") => <T extends string | number | boolean | import(\"type-fest\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonObject",
+              "canonicalReference": "type-fest!JsonObject:type"
+            },
+            {
+              "kind": "Content",
+              "text": " | import(\"type-fest\")."
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonArray",
+              "canonicalReference": "type-fest!JsonArray:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", V extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonValue",
+              "canonicalReference": "type-fest!JsonValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">(storageKey: T, defaultValue?: V | null) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<V>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "getStorage",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 10
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!getSyncStorage:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "getSyncStorage: "
+            },
+            {
+              "kind": "Content",
+              "text": "<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "NonNullable",
+              "canonicalReference": "!NonNullable:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonValue",
+              "canonicalReference": "type-fest!JsonValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">, V extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonValue",
+              "canonicalReference": "type-fest!JsonValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ">(a: T, defaultValue?: V) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<V>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "getSyncStorage",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 10
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!hasDomainPermission:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "hasDomainPermission: "
+            },
+            {
+              "kind": "Content",
+              "text": "(domain: string) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<boolean>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "hasDomainPermission",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!hasExtensionPermission:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "hasExtensionPermission: "
+            },
+            {
+              "kind": "Content",
+              "text": "(permission: string) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<boolean>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "hasExtensionPermission",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "browser-ext-utilz!intervalType:type",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type intervalType = "
+            },
+            {
+              "kind": "Content",
+              "text": "(a: () => void, b: number) => () => void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "intervalType",
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!listenForCookieChanges:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "listenForCookieChanges: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "listenForCookieChanges",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!listExtensions:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "listExtensions: "
+            },
+            {
+              "kind": "Content",
+              "text": "(excludeSelf?: boolean) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Management.ExtensionInfo",
+              "canonicalReference": "webextension-polyfill-ts!Management.ExtensionInfo:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "[]>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "listExtensions",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!oneShotEventHandler:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "oneShotEventHandler: "
+            },
+            {
+              "kind": "Content",
+              "text": "<T extends "
+            },
+            {
+              "kind": "Reference",
+              "text": "EventTypeHelper",
+              "canonicalReference": "browser-ext-utilz!EventTypeHelper:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ">(eventType: T, matchesTargetEvent?: (...eventArgs: T[\"addListener\"] extends (arg: infer R) => void ? R extends (...args: any[]) => any ? "
+            },
+            {
+              "kind": "Reference",
+              "text": "Parameters",
+              "canonicalReference": "!Parameters:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<R> : any[] : any[]) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<boolean>) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<unknown>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "oneShotEventHandler",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 10
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!oneShotEventHandlerSyncCheck:var",
+          "docComment": "/**\n * This func is mainly designed to work with downloads.onDeterminingFileName\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "oneShotEventHandlerSyncCheck: "
+            },
+            {
+              "kind": "Content",
+              "text": "(eventType: any, matchesTargetEvent?: (...args: any[]) => boolean) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<unknown>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "oneShotEventHandlerSyncCheck",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!popFromLocalList:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "popFromLocalList: "
+            },
+            {
+              "kind": "Content",
+              "text": "<T>(key: string) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "popFromLocalList",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "browser-ext-utilz!promptToCopyViaNotification:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function promptToCopyViaNotification(message: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": ", contentToCopy: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "void"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 6
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "message",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "parameterName": "contentToCopy",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "name": "promptToCopyViaNotification"
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!proposePendingPermissionsOnUserAction:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "proposePendingPermissionsOnUserAction: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "proposePendingPermissionsOnUserAction",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!pushToLocalList:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "pushToLocalList: "
+            },
+            {
+              "kind": "Content",
+              "text": "<T>(key: string, ...items: T[]) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "pushToLocalList",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!reloadTab:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "reloadTab: "
+            },
+            {
+              "kind": "Content",
+              "text": "(tabId: number) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<unknown>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "reloadTab",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!sendMessageToActiveTab:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "sendMessageToActiveTab: "
+            },
+            {
+              "kind": "Content",
+              "text": "(msg: "
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonValue",
+              "canonicalReference": "type-fest!JsonValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "sendMessageToActiveTab",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!setBadgeColor:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "setBadgeColor: "
+            },
+            {
+              "kind": "Content",
+              "text": "(color: string) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "setBadgeColor",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!setLocalStorage:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "setLocalStorage: "
+            },
+            {
+              "kind": "Content",
+              "text": "(k: string, v: any | any[]) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<unknown>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "setLocalStorage",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!setStorage:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "setStorage: "
+            },
+            {
+              "kind": "Content",
+              "text": "(storageType: \"sync\" | \"local\") => (storageKey: string, value: "
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonValue",
+              "canonicalReference": "type-fest!JsonValue:type"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<unknown>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "setStorage",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!suggestDownloadPath:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "suggestDownloadPath: "
+            },
+            {
+              "kind": "Content",
+              "text": "(filterDownloadEvents: (a: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Downloads.DownloadItem",
+              "canonicalReference": "webextension-polyfill-ts!Downloads.DownloadItem:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => boolean, handleSuggestName: any) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<any>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "suggestDownloadPath",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!textNotification:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "textNotification: "
+            },
+            {
+              "kind": "Content",
+              "text": "(title: string, subTitle: string, action?: (el?: any) => void) => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "textNotification",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!toggleEventListenerViaBrowserActionFactory:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "toggleEventListenerViaBrowserActionFactory: "
+            },
+            {
+              "kind": "Content",
+              "text": "(eventObject: any, handler: (...args: any) => any) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<() => void>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "toggleEventListenerViaBrowserActionFactory",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!tryGetActiveTab:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "tryGetActiveTab: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<"
+            },
+            {
+              "kind": "Reference",
+              "text": "Tabs.Tab",
+              "canonicalReference": "webextension-polyfill-ts!Tabs.Tab:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " | undefined>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "tryGetActiveTab",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 6
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!updateNotificationIconPath:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "updateNotificationIconPath: "
+            },
+            {
+              "kind": "Content",
+              "text": "(v: string) => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "updateNotificationIconPath",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!updateNotificationIconURL:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "updateNotificationIconURL: "
+            },
+            {
+              "kind": "Content",
+              "text": "(v: "
+            },
+            {
+              "kind": "Reference",
+              "text": "URL",
+              "canonicalReference": "!URL:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "updateNotificationIconURL",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!waitForDownload:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "waitForDownload: "
+            },
+            {
+              "kind": "Content",
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<unknown>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "waitForDownload",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!whenPageReady:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "whenPageReady: "
+            },
+            {
+              "kind": "Content",
+              "text": "(action: () => void, urlSelector?: "
+            },
+            {
+              "kind": "Reference",
+              "text": "RegExp",
+              "canonicalReference": "!RegExp:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => void"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "whenPageReady",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 4
+          }
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "browser-ext-utilz!withEachTab:var",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "withEachTab: "
+            },
+            {
+              "kind": "Content",
+              "text": "<T>(cb: (a: "
+            },
+            {
+              "kind": "Reference",
+              "text": "Tabs.Tab",
+              "canonicalReference": "webextension-polyfill-ts!Tabs.Tab:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ") => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>) => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<T[]>"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "withEachTab",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 8
+          }
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "browser-ext-utilz!writeToClipboard:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function writeToClipboard(newClip: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "newClip",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "name": "writeToClipboard"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "browser-ext-utilz!writeToClipboardViaContentScript:function(1)",
+          "docComment": "",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function writeToClipboardViaContentScript(newClip: "
+            },
+            {
+              "kind": "Content",
+              "text": "string"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<boolean>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 5
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "newClip",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "name": "writeToClipboardViaContentScript"
+        }
+      ]
+    }
+  ]
+}

@@ -25,9 +25,8 @@ export const getApplicationId = () => browser.runtime.id;
 
 const defaultEventMatcher = () => Promise.resolve(true);
 
-type CatchallFunc = (...args: any[]) => any;
-interface EventTypeHelper {
-  addListener: Function | CatchallFunc;
+export interface EventTypeHelper {
+  addListener: Function | ((...args: any[]) => any);
   removeListener: Function;
 }
 export const oneShotEventHandler = <T extends EventTypeHelper>(
