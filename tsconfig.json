@@ -35,8 +35,5 @@
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"],
-  "typedocOptions": {
-    "mode": "modules",
-    "out": "docs"
-  }
+  "typedocOptions": { "mode": "file" }
 }
