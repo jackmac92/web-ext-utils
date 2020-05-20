@@ -1,34 +1,32 @@
 {
   "name": "browser-ext-utilz",
   "version": "v1.9.1",
-  "files": [
-    "dist-*/",
-    "bin/"
-  ],
-  "pika": true,
-  "sideEffects": false,
   "scripts": {
+    "test": "jest",
+    "lint": "eslint src/**/*s",
+    "check-commit": "lint-staged && tsc && jest --changedSince=HEAD",
     "build": "pika build"
+  },
+  "pre-commit": "check-commit",
+  "lint-staged": {
+    "*.ts": ["eslint --fix", "git add"],
+    "*.js": ["eslint --fix", "git add"],
+    "*.css": ["stylelint --fix", "git add"]
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
   },
   "@pika/pack": {
     "pipeline": [
       [
         "@pika/plugin-ts-standard-pkg",
         {
-          "exclude": [
-            "__tests__/**/*"
-          ]
+          "exclude": ["__tests__/**/*"]
         }
       ],
-      [
-        "@pika/plugin-build-node"
-      ],
-      [
-        "@pika/plugin-build-web"
-      ],
-      [
-        "@pika/plugin-build-deno"
-      ]
+      ["@pika/plugin-build-node"],
+      ["@pika/plugin-build-web"],
+      ["@pika/plugin-build-deno"]
     ]
   },
   "dependencies": {
@@ -59,10 +57,5 @@
     "pre-commit": "^1.2.2",
     "ts-jest": "^24.2.0",
     "typescript": "^3.8.3"
-  },
-  "source": "dist-src/index.js",
-  "types": "dist-types/index.d.ts",
-  "main": "dist-node/index.js",
-  "module": "dist-web/index.js",
-  "deno": "dist-deno/index.ts"
+  }
 }
