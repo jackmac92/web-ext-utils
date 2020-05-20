@@ -3,6 +3,7 @@ import { browser } from "webextension-polyfill-ts";
 type validationHandler = (el: any) => boolean;
 type locateElementHandler = () => any;
 
+/** @hidden */
 const MAX_ATTEMPTS = 20;
 
 export const elementLocated = (

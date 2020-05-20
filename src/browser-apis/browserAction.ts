@@ -1,7 +1,9 @@
 import { browser, Tabs } from "webextension-polyfill-ts";
 import { getLocalStorageBoolean, setLocalStorage } from "./storage";
 
+/** @hidden */
 const SINGLETON_LOCAL_STORAGE_KEY = "browserActionInUse";
+/** @hidden */
 const LOCAL_STORAGE_KEY = "browserActionStatus";
 
 const getActiveState = () => getLocalStorageBoolean(LOCAL_STORAGE_KEY, false);
