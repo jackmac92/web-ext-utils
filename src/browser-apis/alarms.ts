@@ -1,6 +1,7 @@
 import { browser } from "webextension-polyfill-ts";
 
-export type intervalType = (a: () => void, b: number) => () => void;
+/** @hidden */
+type intervalType = (a: () => void, b: number) => () => void;
 
 export const browserSetTimeout: intervalType = (cb, ms) => {
   const cbUuid = `${Math.random()}`;

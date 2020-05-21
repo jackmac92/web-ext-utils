@@ -1,14 +1,34 @@
 {
   "name": "browser-ext-utilz",
   "version": "v1.9.1",
-  "files": ["dist-*/", "bin/"],
-  "pika": true,
-  "sideEffects": false,
   "scripts": {
     "prerun-api-extractor": "yarn tsc",
     "run-api-extractor": "api-extractor run",
     "postbuild": "yarn run-api-extractor",
+    "test": "jest",
+    "lint": "eslint src/**/*s",
+    "check-commit": "lint-staged && tsc && jest --changedSince=HEAD",
     "build": "pika build"
+  },
+  "pre-commit": "check-commit",
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "@pika/pack": {
     "pipeline": [
@@ -24,11 +44,10 @@
     ]
   },
   "dependencies": {
-    "@pika/fetch": "^0.1.0",
     "@semantic-release/gitlab-config": "^8.0.0",
     "callbag-from-async-iter": "^1.0.0",
     "nanoid": "^3.0.2",
-    "type-fest": "^0.8.1",
+    "type-fest": "^0.13.1",
     "webextension-polyfill-ts": "^0.11.0"
   },
   "devDependencies": {
@@ -42,20 +61,15 @@
     "@pika/types": "^0.8.1",
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.2",
-    "@typescript-eslint/eslint-plugin": "^2.14.0",
-    "@typescript-eslint/parser": "^2.14.0",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
     "commitlint": "^8.2.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.0.0",
     "jest": "^24.9.0",
     "jest-webextension-mock": "^3.5.0",
     "lint-staged": "^9.5.0",
     "pre-commit": "^1.2.2",
     "ts-jest": "^24.2.0",
-    "typescript": "^3.8.3"
-  },
-  "source": "dist-src/index.js",
-  "types": "dist-types/index.d.ts",
-  "main": "dist-node/index.js",
-  "module": "dist-web/index.js",
-  "deno": "dist-deno/index.ts"
+    "typescript": "^3.9.3"
+  }
 }

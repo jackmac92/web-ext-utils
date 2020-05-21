@@ -7,7 +7,7 @@ type locateElementHandler = () => any;
 const MAX_ATTEMPTS = 20;
 
 export const elementLocated = (
-  el: any,
+  el: unknown,
   validator: validationHandler = () => true
 ) => {
   if (el === undefined) {
@@ -26,9 +26,8 @@ export const scrapeInfo = async (
   locator: locateElementHandler,
   validator: validationHandler
 ) => {
-  const comPort = browser.runtime.connect();
   const payload = await new Promise((resolve, reject) => {
-    let element: any;
+    let element: ReturnType<typeof locator>;
     let attempts = 0;
     const waitForEl = setInterval(() => {
       if (elementLocated(element, validator)) {
@@ -45,5 +44,5 @@ export const scrapeInfo = async (
       }
     }, 1000);
   });
-  return comPort.postMessage({ type: "SCRAPE_INFO", payload });
+  browser.runtime.sendMessage({ type: "SCRAPE_INFO", payload });
 };
