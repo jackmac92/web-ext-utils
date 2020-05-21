@@ -3,6 +3,7 @@ import { nanoid } from "nanoid";
 import { getActiveTab } from "../browser-apis/tabs";
 import { oneShotEventHandler } from "./misc";
 
+/** @hidden */
 const addSelfCleaningBannerToTab = (message: string) => async (
   tabId: number
 ) => {
@@ -60,6 +61,9 @@ const addSelfCleaningBannerToTab = (message: string) => async (
   return waitForResponse;
 };
 
+/**
+ * @category helpers
+ */
 export const addBannerToActiveTab = (
   activityName = "Unknown Task"
 ): Promise<boolean> => {

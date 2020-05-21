@@ -30,6 +30,14 @@ export interface EventTypeHelper {
   addListener: Function | ((...args: any[]) => any);
   removeListener: Function;
 }
+
+/**
+ * @param eventType
+ * @param matchesTargetEvent
+ *
+ * @returns A promise which resolves with the first matching event
+ * @category helpers
+ */
 export const oneShotEventHandler = <T extends EventTypeHelper>(
   eventType: T,
   matchesTargetEvent: (
@@ -68,6 +76,8 @@ export const oneShotEventHandler = <T extends EventTypeHelper>(
 
 /**
  * This func is mainly designed to work with downloads.onDeterminingFileName
+ *
+ * @hidden
  */
 export const oneShotEventHandlerSyncCheck = (
   eventType: any,
