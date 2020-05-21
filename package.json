@@ -35,12 +35,20 @@
       [
         "@pika/plugin-ts-standard-pkg",
         {
-          "exclude": ["__tests__/**/*"]
+          "exclude": [
+            "__tests__/**/*"
+          ]
         }
       ],
-      ["@pika/plugin-build-node"],
-      ["@pika/plugin-build-web"],
-      ["@pika/plugin-build-deno"]
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-deno"
+      ]
     ]
   },
   "dependencies": {
