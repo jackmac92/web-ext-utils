@@ -125,7 +125,7 @@
 
   "docModel": {
     "enabled": true,
-    "apiJsonFilePath": "<projectFolder>/pkg/dist-src/<unscopedPackageName>.api.json"
+    "apiJsonFilePath": "<projectFolder>/pkg/dist-src/extracted-api.json"
   },
 
   /**
