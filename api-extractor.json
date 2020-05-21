@@ -125,7 +125,7 @@
 
   "docModel": {
     "enabled": true,
-    "apiJsonFilePath": "<projectFolder>/etc/<unscopedPackageName>.api.json"
+    "apiJsonFilePath": "<projectFolder>/pkg/dist-src/<unscopedPackageName>.api.json"
   },
 
   /**
@@ -306,12 +306,12 @@
       "default": {
         "logLevel": "warning"
         // "addToApiReportFile": false
-      }
+      },
 
-      // "tsdoc-link-tag-unescaped-text": {
-      //   "logLevel": "warning",
-      //   "addToApiReportFile": true
-      // },
+      "tsdoc-undefined-tag": {
+        "logLevel": "none",
+        "addToApiReportFile": true
+      }
       //
       // . . .
     }
