@@ -1,5 +1,6 @@
 import { browser } from "webextension-polyfill-ts";
 
+/** @hidden */
 type intervalType = (a: () => void, b: number) => () => void;
 
 export const browserSetTimeout: intervalType = (cb, ms) => {

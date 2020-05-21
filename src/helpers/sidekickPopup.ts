@@ -1,5 +1,6 @@
-import { browser, Windows } from "webextension-polyfill-ts";
+import { browser, Windows } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
 
+/** @hidden */
 export const createSidekickWindow = async (
   url: string | string[]
 ): Promise<Windows.Window> => {

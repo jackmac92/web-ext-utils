@@ -2,6 +2,7 @@ import { browser } from "webextension-polyfill-ts";
 import { getLocalStorage, setLocalStorage } from "../browser-apis/storage";
 import { nanoid } from "nanoid";
 
+/** @hidden */
 const installIdKey = "applicationId__unieq";
 
 export const getInstallId = () => getLocalStorage<string, string>(installIdKey);
@@ -25,7 +26,9 @@ export const getApplicationId = () => browser.runtime.id;
 
 const defaultEventMatcher = () => Promise.resolve(true);
 
+/** @hidden */
 type CatchallFunc = (...args: any[]) => any;
+
 interface EventTypeHelper {
   addListener: Function | CatchallFunc;
   removeListener: Function;
@@ -42,9 +45,6 @@ export const oneShotEventHandler = <T extends EventTypeHelper>(
 ) =>
   new Promise((resolve, reject) => {
     const handlerTimeout = setTimeout(reject, 1000 * 60);
-
-    // @ts-ignore
-    const entAddListen = eventType.addListener;
 
     const handlerHelper = (
       ...eventArgs: Parameters<typeof matchesTargetEvent>

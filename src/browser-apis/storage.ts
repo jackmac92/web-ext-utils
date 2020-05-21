@@ -1,4 +1,4 @@
-import { JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
+import { JsonObject, JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
 import { browser } from "webextension-polyfill-ts";
 
 type JsonVal = NonNullable<JsonValue>;
@@ -11,13 +11,16 @@ export const getStorage = (storageType: "local" | "sync") => <
   defaultValue: null | V = null
 ): Promise<V> =>
   new Promise((resolve, reject) => {
-    browser.storage[storageType].get([storageKey]).then(result => {
-      const r = result[storageKey.toString()];
-      if (defaultValue === null && !r) {
-        reject(result);
-      }
-      resolve(r || defaultValue);
-    });
+    browser.storage[storageType]
+      .get([storageKey])
+      .then((result: JsonObject) => {
+        const r = result[storageKey.toString()];
+        if (defaultValue === null && !r) {
+          reject(result);
+        }
+        // @ts-expect-error
+        resolve(r || defaultValue);
+      });
   });
 
 export const setStorage = (storageType: "local" | "sync") => (

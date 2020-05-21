@@ -18,9 +18,8 @@ export function writeToClipboard(newClip: string): Promise<void> {
 
 export function writeToClipboardViaContentScript(
   newClip: string
-): Promise<boolean> {
+): Promise<boolean | void> {
   return (
-    // TODO add tab helper to run contentScript in any tab
     navigator.permissions
       // @ts-ignore
       .query({ name: "clipboard-write" })
