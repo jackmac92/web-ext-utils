@@ -32,8 +32,8 @@ export interface EventTypeHelper {
 }
 
 /**
- * @param eventType
- * @param matchesTargetEvent
+ * @param eventType - browser event to monitor
+ * @param matchesTargetEvent - callback to identify targetted event
  *
  * @returns A promise which resolves with the first matching event
  * @category helpers
