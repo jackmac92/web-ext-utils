@@ -34,12 +34,12 @@ const _setupNotificationOverallClickHandler = (action: unknown) => (
   browser.notifications.onClicked.addListener(handler);
 };
 
-interface NotificationButton {
+export interface NotificationButton {
   title: string;
   iconUrl?: string;
 }
 
-type NotificationButtonTuple = [NotificationButton, () => void];
+export type NotificationButtonTuple = [NotificationButton, () => void];
 
 export const buttonNotification = (
   title: string,
