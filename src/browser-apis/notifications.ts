@@ -21,11 +21,69 @@ export const updateNotificationIconURL = (v: URL) => {
   notificationIconURL = v;
 };
 
+const _setupNotificationOverallClickHandler = (action: unknown) => (
+  createId: string
+) => {
+  const handler = (id: string) => {
+    if (id === createId) {
+      if (typeof action === "function") action();
+      browser.notifications.clear(id);
+      browser.notifications.onClicked.removeListener(handler);
+    }
+  };
+  browser.notifications.onClicked.addListener(handler);
+};
+
+interface NotificationButton {
+  title: string;
+  iconUrl?: string;
+}
+
+type NotificationButtonTuple = [NotificationButton, () => void];
+
+export const buttonNotification = (
+  title: string,
+  subTitle: string,
+  btns: NotificationButtonTuple[],
+  action?: (el?: unknown) => Promise<void>
+) => {
+  const { buttons, buttonHandlers } = btns.reduce(
+    (acc, [button, handler]) => ({
+      buttons: [...acc.buttons, button],
+      buttonHandlers: [...acc.buttonHandlers, handler]
+    }),
+    { buttons: [], buttonHandlers: [] }
+  );
+
+  return browser.notifications
+    .create({
+      title,
+      iconUrl: notificationIconURL.toString(),
+      // @ts-expect-error
+      buttons,
+      message: subTitle,
+      type: "basic"
+    })
+    .then(createId => {
+      _setupNotificationOverallClickHandler(action)(createId);
+      const handler = (id: string, buttonIdx: number) => {
+        if (id === createId) {
+          const action = buttonHandlers[buttonIdx];
+          if (typeof action === "function") action();
+          browser.notifications.clear(id);
+          browser.notifications.onButtonClicked.removeListener(handler);
+        }
+      };
+
+      browser.notifications.onButtonClicked.addListener(handler);
+    });
+};
+
 export const textNotification = (
   title: string,
   subTitle: string,
   action?: (el?: unknown) => Promise<void>
-) => {
+) =>
   browser.notifications
     .create({
       title,
@@ -33,15 +91,4 @@ export const textNotification = (
       message: subTitle,
       type: "basic"
     })
-    .then(createId => {
-      const handler = (id: string) => {
-        if (id === createId) {
-          if (typeof action === "function") action();
-          browser.notifications.clear(id);
-          browser.notifications.onClicked.removeListener(handler);
-        }
-      };
-      browser.notifications.onClicked.addListener(handler);
-    });
-};
-// SHOULDDO click here to switch to tab notificatoin
+    .then(_setupNotificationOverallClickHandler(action));
