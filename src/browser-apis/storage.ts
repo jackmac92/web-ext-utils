@@ -1,35 +1,51 @@
 import { JsonObject, JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
 import { browser } from "webextension-polyfill-ts";
+import requiresPermissions from "../utils/requiresPermissions";
+
+@requiresPermissions("storage")
+class BaseStorageApi {
+  storageType: "local" | "sync";
+  constructor(storageType: "local" | "sync") {
+    this.storageType = storageType;
+  }
+  get<T extends NonNullable<JsonValue>, V extends JsonValue>(
+    storageKey: T,
+    defaultValue?: V
+  ): Promise<V> {
+    return new Promise((resolve, reject) => {
+      browser.storage[this.storageType]
+        .get([storageKey])
+        .then((result: JsonObject) => {
+          const r = result[storageKey.toString()];
+          if (defaultValue === undefined && !r) {
+            reject(result);
+          }
+          // @ts-expect-error
+          resolve(r || defaultValue);
+        });
+    });
+  }
+  set(storageKey: string, value: JsonValue) {
+    return new Promise(resolve => {
+      browser.storage[this.storageType]
+        .set({ [storageKey]: value })
+        .then(result => resolve(result));
+    });
+  }
+}
 
 export const getStorage = (storageType: "local" | "sync") => <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
 >(
   storageKey: T,
-  defaultValue: null | V = null
-): Promise<V> =>
-  new Promise((resolve, reject) => {
-    browser.storage[storageType]
-      .get([storageKey])
-      .then((result: JsonObject) => {
-        const r = result[storageKey.toString()];
-        if (defaultValue === null && !r) {
-          reject(result);
-        }
-        // @ts-expect-error
-        resolve(r || defaultValue);
-      });
-  });
+  defaultValue?: V
+): Promise<V> => new BaseStorageApi(storageType).get(storageKey, defaultValue);
 
 export const setStorage = (storageType: "local" | "sync") => (
   storageKey: string,
   value: JsonValue
-) =>
-  new Promise(resolve => {
-    browser.storage[storageType]
-      .set({ [storageKey]: value })
-      .then(result => resolve(result));
-  });
+) => new BaseStorageApi(storageType).set(storageKey, value);
 
 export const getSyncStorage: <
   T extends NonNullable<JsonValue>,
