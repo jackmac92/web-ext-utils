@@ -1,6 +1,6 @@
 {
   "name": "browser-ext-utilz",
-  "version": "1.23.1",
+  "version": "1.23.2",
   "scripts": {
     "prerun-api-extractor": "yarn tsc",
     "run-api-extractor": "api-extractor run",
@@ -12,24 +12,43 @@
   },
   "pre-commit": "check-commit",
   "lint-staged": {
-    "*.ts": ["eslint --fix", "git add"],
-    "*.js": ["eslint --fix", "git add"],
-    "*.css": ["stylelint --fix", "git add"]
+    "*.ts": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ]
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "@pika/pack": {
     "pipeline": [
       [
         "@pika/plugin-ts-standard-pkg",
         {
-          "exclude": ["__tests__/**/*"]
+          "exclude": [
+            "__tests__/**/*"
+          ]
         }
       ],
-      ["@pika/plugin-build-node"],
-      ["@pika/plugin-build-web"],
-      ["@pika/plugin-build-deno"]
+      [
+        "@pika/plugin-build-node"
+      ],
+      [
+        "@pika/plugin-build-web"
+      ],
+      [
+        "@pika/plugin-build-deno"
+      ]
     ]
   },
   "dependencies": {
