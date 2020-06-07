@@ -1437,7 +1437,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!setBadgeColor:var",
-          "docComment": "",
+          "docComment": "/**\n * @hidden\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1528,45 +1528,6 @@
           ],
           "releaseTag": "Public",
           "name": "setStorage",
-          "variableTypeTokenRange": {
-            "startIndex": 1,
-            "endIndex": 6
-          }
-        },
-        {
-          "kind": "Variable",
-          "canonicalReference": "browser-ext-utilz!suggestDownloadPath:var",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "suggestDownloadPath: "
-            },
-            {
-              "kind": "Content",
-              "text": "(filterDownloadEvents: (a: "
-            },
-            {
-              "kind": "Reference",
-              "text": "Downloads.DownloadItem",
-              "canonicalReference": "webextension-polyfill-ts!Downloads.DownloadItem:interface"
-            },
-            {
-              "kind": "Content",
-              "text": ") => boolean, handleSuggestName: any) => "
-            },
-            {
-              "kind": "Reference",
-              "text": "Promise",
-              "canonicalReference": "!Promise:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<unknown>"
-            }
-          ],
-          "releaseTag": "Public",
-          "name": "suggestDownloadPath",
           "variableTypeTokenRange": {
             "startIndex": 1,
             "endIndex": 6
