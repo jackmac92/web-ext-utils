@@ -7,24 +7,31 @@ const SINGLETON_LOCAL_STORAGE_KEY = "browserActionInUse";
 /** @hidden */
 const LOCAL_STORAGE_KEY = "browserActionStatus";
 
+/** @hidden */
 const getActiveState = () => getLocalStorageBoolean(LOCAL_STORAGE_KEY, false);
+/** @hidden */
 const setActiveState = (val: boolean) =>
   setLocalStorage(LOCAL_STORAGE_KEY, val);
 
 // COULDDO check if below arg is rgba and pass it differently (this assumes you know it needs to be a hex code)
+/** @hidden */
 export const setBadgeColor = (color: string) =>
   browser.browserAction.setBadgeBackgroundColor({ color });
 
+/** @hidden */
 const matchIconToStatus = async () => {
-  const current = await getActiveState();
-  const color = current ? "#AA3" : "#F00";
-  const badgeText = current ? "on" : "off";
+  const isNowActive = await getActiveState();
+  const color = isNowActive ? "#AA3" : "#F00";
+  const badgeText = isNowActive ? "on" : "off";
   return Promise.all([
     browser.browserAction.setBadgeBackgroundColor({ color }),
     browser.browserAction.setBadgeText({ text: badgeText })
-  ]);
+  ]).then(() => {});
 };
 
+/**
+ * @hidden
+ */
 const toggleActiveState = async () => {
   const current = await getActiveState();
   const newState = !current;

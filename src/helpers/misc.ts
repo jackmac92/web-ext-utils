@@ -54,21 +54,34 @@ export const oneShotEventHandler = <T extends EventTypeHelper>(
     const handlerHelper = (
       ...eventArgs: Parameters<typeof matchesTargetEvent>
     ) => {
-      Promise.resolve(matchesTargetEvent(...eventArgs))
-        .then(isTheCorrectEvent => {
-          if (isTheCorrectEvent) {
-            resolve(...eventArgs);
-            clearTimeout(handlerTimeout);
-            // @ts-ignore
-            eventType.removeListener(handlerHelper);
-          }
-        })
-        .catch(err => {
-          console.warn(
-            "Ignoring error encountered when checking for target event",
-            err
-          );
-        });
+      const eventCheckResult: Promise<boolean> | boolean = matchesTargetEvent(
+        ...eventArgs
+      );
+      if (typeof eventCheckResult.then === "function") {
+        return eventCheckResult
+          .then(isTheCorrectEvent => {
+            if (isTheCorrectEvent) {
+              resolve(...eventArgs);
+              clearTimeout(handlerTimeout);
+              // @ts-ignore
+              eventType.removeListener(handlerHelper);
+            }
+          })
+          .catch(err => {
+            console.warn(
+              "Ignoring error encountered when checking for target event",
+              err
+            );
+          });
+      } else {
+        if ((eventCheckResult as unknown) as boolean) {
+          resolve(...eventArgs);
+          clearTimeout(handlerTimeout);
+          eventType.removeListener(handlerHelper);
+          return true;
+        }
+        return false;
+      }
     };
     // @ts-ignore
     eventType.addListener(handlerHelper);
