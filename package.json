@@ -13,16 +13,13 @@
   "pre-commit": "check-commit",
   "lint-staged": {
     "*.ts": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.css": [
-      "stylelint --fix",
-      "git add"
+      "stylelint --fix"
     ]
   },
   "commitlint": {
