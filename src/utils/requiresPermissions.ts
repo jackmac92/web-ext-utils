@@ -5,6 +5,9 @@ browser.permissions.getAll().then(allPerms => {
   allPermissions = allPerms.permissions || [];
 });
 
+/**
+ * @hidden
+ */
 export default (...requiredPermissions: string[]) =>
   function(target: Function) {
     for (const propertyName of Object.keys(target.prototype)) {

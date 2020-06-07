@@ -1,18 +1,17 @@
-// @ts-nocheck
-import { browser, Downloads } from "webextension-polyfill-ts";
-import { oneShotEventHandlerSyncCheck, oneShotEventHandler } from "../index";
+import { browser } from "webextension-polyfill-ts";
+import { oneShotEventHandler } from "../helpers/misc";
 
 export const waitForDownload = async () =>
   oneShotEventHandler(browser.downloads.onCreated);
 
-export const suggestDownloadPath = async (
-  filterDownloadEvents: (a: Downloads.DownloadItem) => boolean,
-  handleSuggestName
-) =>
-  oneShotEventHandlerSyncCheck(
-    browser.downloads.onCreated,
-    filterDownloadEvents
-  ).then((downloadItem, suggest) => handleSuggestName(suggest, downloadItem));
+// export const suggestDownloadPath = async (
+//   filterDownloadEvents: (a: Downloads.DownloadItem) => boolean,
+//   handleSuggestName
+// ) =>
+//   oneShotEventHandlerSyncCheck(
+//     browser.downloads.onCreated,
+//     filterDownloadEvents
+//   ).then((downloadItem, suggest) => handleSuggestName(suggest, downloadItem));
 
 // #### Types
 // FilenameConflictAction

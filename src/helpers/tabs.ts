@@ -1,5 +1,5 @@
 import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
-import { JsonValue } from "type-fest";
+import { JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
 import { getActiveTab } from "../browser-apis/tabs";
 
 export const awaitTabClosing = async (targetTabId: number, msTimeout = 60000) =>
