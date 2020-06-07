@@ -1,5 +1,7 @@
+/** @hidden  */
 const arr = Array.from;
 
+/** @hidden  */
 const extractLinkedText = (node: HTMLElement): string => {
   const tmpNode = node.cloneNode(true) as HTMLElement;
   arr(tmpNode.querySelectorAll("a")).forEach(

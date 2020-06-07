@@ -2,6 +2,7 @@ import { JsonObject, JsonValue } from "type-fest"; // eslint-disable-line no-unu
 import { browser } from "webextension-polyfill-ts";
 import requiresPermissions from "../utils/requiresPermissions";
 
+/** @hidden  */
 @requiresPermissions("storage")
 class BaseStorageApi {
   storageType: "local" | "sync";
