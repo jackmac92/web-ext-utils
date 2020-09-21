@@ -4,7 +4,7 @@
   "scripts": {
     "prerun-api-extractor": "yarn tsc",
     "run-api-extractor": "api-extractor run",
-    "noop_postbuild": "yarn run-api-extractor",
+    "postbuild": "yarn run-api-extractor",
     "test": "jest",
     "lint": "eslint src/**/*s",
     "check-commit": "lint-staged && tsc && jest --changedSince=HEAD",
@@ -52,7 +52,6 @@
     "@semantic-release/gitlab-config": "^8.0.0",
     "callbag-from-async-iter": "^1.0.0",
     "nanoid": "^3.0.2",
-    "type-fest": "^0.13.1",
     "webextension-polyfill-ts": "^0.16.0"
   },
   "devDependencies": {

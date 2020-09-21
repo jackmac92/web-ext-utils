@@ -1,4 +1,3 @@
-import { JsonObject, JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
 import { browser } from "webextension-polyfill-ts";
 import requiresPermissions from "../utils/requiresPermissions";
 
@@ -26,10 +25,10 @@ class BaseStorageApi {
     });
   }
   set(storageKey: string, value: JsonValue) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       browser.storage[this.storageType]
         .set({ [storageKey]: value })
-        .then(result => resolve(result));
+        .then((result) => resolve(result));
     });
   }
 }
@@ -79,10 +78,10 @@ export const pushToLocalList: <T>(
   ...items: T[]
 ) => Promise<void> = (k, ...vals) =>
   getLocalStorage(k, [])
-    .then(existingValues => setLocalStorage(k, [...existingValues, ...vals]))
+    .then((existingValues) => setLocalStorage(k, [...existingValues, ...vals]))
     .then(() => Promise.resolve());
 
-export const popFromLocalList: <T>(key: string) => Promise<T> = k =>
+export const popFromLocalList: <T>(key: string) => Promise<T> = (k) =>
   getLocalStorage(k, []).then(([head, ...tail]) =>
     setLocalStorage(k, tail).then(() => head)
   );
