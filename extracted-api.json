@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.8.0",
+    "toolVersion": "7.9.16",
     "schemaVersion": 1003,
     "oldestForwardsCompatibleVersion": 1001
   },
@@ -713,7 +713,7 @@
             {
               "kind": "Reference",
               "text": "JsonValue",
-              "canonicalReference": "type-fest!JsonValue:type"
+              "canonicalReference": "browser-ext-utilz!~__global.JsonValue:type"
             },
             {
               "kind": "Content",
@@ -722,7 +722,7 @@
             {
               "kind": "Reference",
               "text": "JsonValue",
-              "canonicalReference": "type-fest!JsonValue:type"
+              "canonicalReference": "browser-ext-utilz!~__global.JsonValue:type"
             },
             {
               "kind": "Content",
@@ -790,17 +790,17 @@
             },
             {
               "kind": "Reference",
-              "text": "JsonObject",
-              "canonicalReference": "type-fest!JsonObject:type"
+              "text": "JsonArray",
+              "canonicalReference": "browser-ext-utilz!~__global.JsonArray:interface"
             },
             {
               "kind": "Content",
-              "text": " | import(\"type-fest\")."
+              "text": " | "
             },
             {
               "kind": "Reference",
-              "text": "JsonArray",
-              "canonicalReference": "type-fest!JsonArray:interface"
+              "text": "JsonObject",
+              "canonicalReference": "browser-ext-utilz!~__global.JsonObject:type"
             },
             {
               "kind": "Content",
@@ -809,7 +809,7 @@
             {
               "kind": "Reference",
               "text": "JsonValue",
-              "canonicalReference": "type-fest!JsonValue:type"
+              "canonicalReference": "browser-ext-utilz!~__global.JsonValue:type"
             },
             {
               "kind": "Content",
@@ -857,7 +857,7 @@
             {
               "kind": "Reference",
               "text": "JsonValue",
-              "canonicalReference": "type-fest!JsonValue:type"
+              "canonicalReference": "browser-ext-utilz!~__global.JsonValue:type"
             },
             {
               "kind": "Content",
@@ -866,7 +866,7 @@
             {
               "kind": "Reference",
               "text": "JsonValue",
-              "canonicalReference": "type-fest!JsonValue:type"
+              "canonicalReference": "browser-ext-utilz!~__global.JsonValue:type"
             },
             {
               "kind": "Content",
@@ -1510,7 +1510,7 @@
             {
               "kind": "Reference",
               "text": "JsonValue",
-              "canonicalReference": "type-fest!JsonValue:type"
+              "canonicalReference": "browser-ext-utilz!~__global.JsonValue:type"
             },
             {
               "kind": "Content",
@@ -1772,12 +1772,12 @@
         },
         {
           "kind": "Function",
-          "canonicalReference": "browser-ext-utilz!writeToClipboard:function(1)",
+          "canonicalReference": "browser-ext-utilz!writeToClipboardViaNavigator:function(1)",
           "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
-              "text": "export declare function writeToClipboard(newClip: "
+              "text": "export declare function writeToClipboardViaNavigator(newClip: "
             },
             {
               "kind": "Content",
@@ -1816,55 +1816,7 @@
               }
             }
           ],
-          "name": "writeToClipboard"
-        },
-        {
-          "kind": "Function",
-          "canonicalReference": "browser-ext-utilz!writeToClipboardViaContentScript:function(1)",
-          "docComment": "",
-          "excerptTokens": [
-            {
-              "kind": "Content",
-              "text": "export declare function writeToClipboardViaContentScript(newClip: "
-            },
-            {
-              "kind": "Content",
-              "text": "string"
-            },
-            {
-              "kind": "Content",
-              "text": "): "
-            },
-            {
-              "kind": "Reference",
-              "text": "Promise",
-              "canonicalReference": "!Promise:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<boolean | void>"
-            },
-            {
-              "kind": "Content",
-              "text": ";"
-            }
-          ],
-          "returnTypeTokenRange": {
-            "startIndex": 3,
-            "endIndex": 5
-          },
-          "releaseTag": "Public",
-          "overloadIndex": 1,
-          "parameters": [
-            {
-              "parameterName": "newClip",
-              "parameterTypeTokenRange": {
-                "startIndex": 1,
-                "endIndex": 2
-              }
-            }
-          ],
-          "name": "writeToClipboardViaContentScript"
+          "name": "writeToClipboardViaNavigator"
         }
       ]
     }
