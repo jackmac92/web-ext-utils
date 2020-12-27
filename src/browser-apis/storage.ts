@@ -1,7 +1,5 @@
 import { browser } from "webextension-polyfill-ts";
-import requiresPermissions from "../utils/requiresPermissions";
 
-@requiresPermissions("storage")
 class BaseStorageApi {
   storageType: "local" | "sync";
   constructor(storageType: "local" | "sync") {
