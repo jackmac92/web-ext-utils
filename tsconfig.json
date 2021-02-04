@@ -3,6 +3,10 @@
     "target": "es2019",
     "module": "esnext",
     "outDir": "./lib",
+    "strict": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "moduleResolution": "node",
     "esModuleInterop": true
   },
