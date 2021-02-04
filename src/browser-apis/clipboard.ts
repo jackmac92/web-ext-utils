@@ -27,7 +27,7 @@ async function writeToClipboard(newClip: string): Promise<void> {
   helperElement.value = newClip;
 
   // focus the helper div's content
-  var range = document.createRange();
+  const range = document.createRange();
   range.selectNode(helperElement);
   const currSelection = window.getSelection();
   if (currSelection === null) {
