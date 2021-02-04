@@ -65,7 +65,7 @@
             },
             {
               "kind": "Content",
-              "text": "<unknown>"
+              "text": "<void>"
             }
           ],
           "releaseTag": "Public",
@@ -442,7 +442,7 @@
                 },
                 {
                   "kind": "Content",
-                  "text": " | ((...args: any[]) => any)"
+                  "text": " | ((..._: any[]) => any)"
                 },
                 {
                   "kind": "Content",
