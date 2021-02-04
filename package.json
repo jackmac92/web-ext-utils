@@ -1,6 +1,6 @@
 {
   "name": "browser-ext-utilz",
-  "version": "1.23.6",
+  "version": "1.23.7",
   "scripts": {
     "prerun-api-extractor": "yarn tsc",
     "run-api-extractor": "api-extractor run",
@@ -76,21 +76,5 @@
     "pre-commit": "^1.2.2",
     "ts-jest": "^26.5.0",
     "typescript": "^4.1.3"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "eslint --fix"
-    ],
-    "*.js": [
-      "eslint --fix"
-    ],
-    "*.css": [
-      "stylelint --fix"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   }
 }
