@@ -40,5 +40,8 @@
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"],
-  "typedocOptions": { "mode": "file" }
+  "typedocOptions": {
+    "entryPoints": ["src/index.ts"],
+    "out": "docs"
+  }
 }
