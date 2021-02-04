@@ -2,7 +2,7 @@ import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line
 import { JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
 import { getActiveTab } from "../browser-apis/tabs";
 
-export const awaitTabClosing = async (targetTabId: number, msTimeout = 60000) =>
+export const awaitTabClosing = async (targetTabId: number, msTimeout = 60000): Promise<void> =>
   new Promise((resolve, reject) => {
     const timeout = setTimeout(() => reject("timeout"), msTimeout);
     const tmpHandler = (tabId: number, _info: Tabs.OnRemovedRemoveInfoType) => {

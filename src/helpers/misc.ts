@@ -27,7 +27,7 @@ export const getApplicationId = () => browser.runtime.id;
 const defaultEventMatcher = () => Promise.resolve(true);
 
 export interface EventTypeHelper {
-  addListener: Function | ((...args: any[]) => any);
+  addListener: Function | ((..._: any[]) => any);
   removeListener: Function;
 }
 
@@ -43,8 +43,8 @@ export const oneShotEventHandler = <T extends EventTypeHelper>(
   matchesTargetEvent: (
     ...eventArgs: T["addListener"] extends (arg: infer R) => void
       ? R extends (...args: any[]) => any
-        ? Parameters<R>
-        : any[]
+      ? Parameters<R>
+      : any[]
       : any[]
   ) => Promise<boolean> = defaultEventMatcher
 ) =>
@@ -61,6 +61,7 @@ export const oneShotEventHandler = <T extends EventTypeHelper>(
         return eventCheckResult
           .then(isTheCorrectEvent => {
             if (isTheCorrectEvent) {
+              // @ts-expect-error
               resolve(...eventArgs);
               clearTimeout(handlerTimeout);
               // @ts-ignore
@@ -75,6 +76,7 @@ export const oneShotEventHandler = <T extends EventTypeHelper>(
           });
       } else {
         if ((eventCheckResult as unknown) as boolean) {
+          // @ts-expect-error
           resolve(...eventArgs);
           clearTimeout(handlerTimeout);
           eventType.removeListener(handlerHelper);
@@ -101,12 +103,11 @@ export const oneShotEventHandlerSyncCheck = (
     const handlerHelper = (...eventArgs: any[]) => {
       const isCorrectEvent = matchesTargetEvent(...eventArgs);
       if (isCorrectEvent) {
+        // @ts-expect-error
         resolve(...eventArgs);
         clearTimeout(handlerTimeout);
         eventType.removeListener(handlerHelper);
-        return true;
       }
-      return false;
     };
     eventType.addListener(handlerHelper);
   });
