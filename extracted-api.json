@@ -122,7 +122,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!buttonNotification:var",
-          "docComment": "",
+          "docComment": "/**\n * @category Notifications\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -571,7 +571,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!getActiveTab:var",
-          "docComment": "",
+          "docComment": "/**\n * @module tabs\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1377,7 +1377,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!reloadTab:var",
-          "docComment": "",
+          "docComment": "/**\n * @module tabs\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1545,7 +1545,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!textNotification:var",
-          "docComment": "",
+          "docComment": "/**\n * @category Notifications\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1614,7 +1614,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!tryGetActiveTab:var",
-          "docComment": "",
+          "docComment": "/**\n * @module tabs\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1734,7 +1734,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!withEachTab:var",
-          "docComment": "",
+          "docComment": "/**\n * @module tabs\n */\n",
           "excerptTokens": [
             {
               "kind": "Content",
