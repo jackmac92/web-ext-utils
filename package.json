@@ -15,7 +15,7 @@
   "lint-staged": {
     "*.ts": [
       "eslint --fix",
-      "npm run run-api-extractor"
+      "echo $(npm run run-api-extractor && git add extracted-api.json)"
     ],
     "*.js": [
       "eslint --fix"
