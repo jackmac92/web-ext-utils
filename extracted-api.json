@@ -178,14 +178,23 @@
             },
             {
               "kind": "Content",
-              "text": "() => void"
+              "text": "() => "
+            },
+            {
+              "kind": "Reference",
+              "text": "Promise",
+              "canonicalReference": "!Promise:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "<void>"
             }
           ],
           "releaseTag": "Public",
           "name": "clearUserDataFromOneWeek",
           "variableTypeTokenRange": {
             "startIndex": 1,
-            "endIndex": 2
+            "endIndex": 4
           }
         },
         {
