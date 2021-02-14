@@ -27,8 +27,8 @@ export const getApplicationId = () => browser.runtime.id;
 const defaultEventMatcher = () => Promise.resolve(true);
 
 export interface EventTypeHelper {
-  addListener: Function | ((..._: any[]) => any);
-  removeListener: Function;
+  addListener: ((..._: any[]) => any);
+  removeListener: ((..._: any[]) => any);
 }
 
 /**
