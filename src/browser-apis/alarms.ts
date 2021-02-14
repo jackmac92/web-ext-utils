@@ -1,6 +1,8 @@
-import { browser } from "webextension-polyfill-ts";
+import { Alarms, browser } from "webextension-polyfill-ts";
 
 export type intervalType = (a: () => void, b: number) => () => void;
+
+const createAlarm = (id: string, options: Alarms.CreateAlarmInfoType) => browser.alarms.create(id, options)
 
 /**
  * @param cb - Callback to use in the timeout func
@@ -11,7 +13,7 @@ export type intervalType = (a: () => void, b: number) => () => void;
  */
 export const browserSetTimeout: intervalType = (cb, ms) => {
   const cbUuid = `${Math.random()}`;
-  browser.alarms.create(cbUuid, {
+  createAlarm(cbUuid, {
     when: Date.now() + ms
   });
   const cleanup = () => {
@@ -37,7 +39,7 @@ export const browserSetTimeout: intervalType = (cb, ms) => {
  */
 export const browserSetInterval: intervalType = (cb, ms) => {
   const cbUuid = `${Math.random()}`;
-  browser.alarms.create(cbUuid, {
+  createAlarm(cbUuid, {
     periodInMinutes: ms / 1000 / 60,
     when: Date.now() + ms
   });
