@@ -14,8 +14,7 @@
   "pre-commit": "check-commit",
   "lint-staged": {
     "*.ts": [
-      "eslint --fix",
-      "npm run lcl-api-report"
+      "eslint --fix"
     ],
     "*.js": [
       "eslint --fix"
