@@ -1,5 +1,5 @@
 import { browser, Permissions } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
-import { oneShotEventHandler } from '../helpers'
+import { oneShotEventHandler } from '../helpers/index'
 import { textNotification } from './notifications'
 import { getLocalStorage, pushToLocalList } from './storage'
 
