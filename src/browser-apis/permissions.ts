@@ -1,10 +1,7 @@
 import { browser, Permissions } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
-import {
-  pushToLocalList,
-  oneShotEventHandler,
-  getLocalStorage,
-  textNotification
-} from '../index'
+import { oneShotEventHandler } from '../helpers'
+import { textNotification } from './notifications'
+import { getLocalStorage, pushToLocalList } from './storage'
 
 const hasPermission = async (
   perms: Permissions.AnyPermissions
