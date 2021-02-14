@@ -39,15 +39,11 @@ export interface EventTypeHelper {
  * @category helpers
  */
 export const oneShotEventHandler = <T extends EventTypeHelper>(
-  eventType: T,
-  matchesTargetEvent: (
-    ...eventArgs: T["addListener"] extends (arg: infer R) => void
-      ? R extends (...args: any[]) => any
-      ? Parameters<R>
-      : any[]
-      : any[]
-  ) => Promise<boolean> = defaultEventMatcher
-) =>
+  { eventType, matchesTargetEvent = defaultEventMatcher }: {
+    eventType: T; matchesTargetEvent?: (
+      ...eventArgs: T["addListener"] extends (arg: infer R) => void ? R extends (...args: any[]) => any ? Parameters<R> : any[] : any[]
+    ) => Promise<boolean>;
+  }) =>
   new Promise((resolve, reject) => {
     const handlerTimeout = setTimeout(reject, 1000 * 60);
 
