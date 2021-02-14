@@ -1,7 +1,7 @@
 {
   "metadata": {
     "toolPackage": "@microsoft/api-extractor",
-    "toolVersion": "7.9.16",
+    "toolVersion": "7.13.1",
     "schemaVersion": 1003,
     "oldestForwardsCompatibleVersion": 1001
   },
@@ -122,7 +122,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!buttonNotification:var",
-          "docComment": "/**\n * @category Notifications\n */\n",
+          "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -178,23 +178,14 @@
             },
             {
               "kind": "Content",
-              "text": "() => "
-            },
-            {
-              "kind": "Reference",
-              "text": "Promise",
-              "canonicalReference": "!Promise:interface"
-            },
-            {
-              "kind": "Content",
-              "text": "<void>"
+              "text": "() => void"
             }
           ],
           "releaseTag": "Public",
           "name": "clearUserDataFromOneWeek",
           "variableTypeTokenRange": {
             "startIndex": 1,
-            "endIndex": 4
+            "endIndex": 2
           }
         },
         {
@@ -458,6 +449,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "addListener",
               "propertyTypeTokenRange": {
@@ -484,6 +476,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "removeListener",
               "propertyTypeTokenRange": {
@@ -571,7 +564,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!getActiveTab:var",
-          "docComment": "/**\n * @module tabs\n */\n",
+          "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1074,6 +1067,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": true,
               "releaseTag": "Public",
               "name": "iconUrl",
               "propertyTypeTokenRange": {
@@ -1099,6 +1093,7 @@
                   "text": ";"
                 }
               ],
+              "isOptional": false,
               "releaseTag": "Public",
               "name": "title",
               "propertyTypeTokenRange": {
@@ -1377,7 +1372,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!reloadTab:var",
-          "docComment": "/**\n * @module tabs\n */\n",
+          "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1545,7 +1540,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!textNotification:var",
-          "docComment": "/**\n * @category Notifications\n */\n",
+          "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1614,7 +1609,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!tryGetActiveTab:var",
-          "docComment": "/**\n * @module tabs\n */\n",
+          "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
@@ -1734,7 +1729,7 @@
         {
           "kind": "Variable",
           "canonicalReference": "browser-ext-utilz!withEachTab:var",
-          "docComment": "/**\n * @module tabs\n */\n",
+          "docComment": "",
           "excerptTokens": [
             {
               "kind": "Content",
