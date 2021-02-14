@@ -1,6 +1,7 @@
 {
   "name": "browser-ext-utilz",
   "version": "1.23.11",
+  "main": "src/index.ts",
   "scripts": {
     "prerun-api-extractor": "yarn tsc",
     "run-api-extractor": "api-extractor run",
