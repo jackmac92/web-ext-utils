@@ -1,6 +1,9 @@
 import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
 import { oneShotEventHandler } from "../helpers/index";
 
+/**
+ * @module tabs
+ */
 export const getActiveTab = (): Promise<Tabs.Tab> =>
   browser.windows
     .getCurrent()
@@ -12,6 +15,9 @@ export const getActiveTab = (): Promise<Tabs.Tab> =>
       return tabs[0];
     });
 
+/**
+ * @module tabs
+ */
 export const tryGetActiveTab = (): Promise<Tabs.Tab | undefined> =>
   browser.windows
     .getCurrent()
@@ -20,8 +26,14 @@ export const tryGetActiveTab = (): Promise<Tabs.Tab | undefined> =>
       return tabs[0];
     });
 
+/**
+ * @module tabs
+ */
 const getAllTabs = () => browser.tabs.query({});
 
+/**
+ * @module tabs
+ */
 export const withEachTab = async <T>(
   cb: (a: Tabs.Tab) => Promise<T>
 ): Promise<T[]> =>
@@ -29,6 +41,9 @@ export const withEachTab = async <T>(
     .then(tabs => tabs.map(t => cb(t)))
     .then(promises => Promise.all(promises));
 
+/**
+ * @module tabs
+ */
 export const reloadTab = async (tabId: number): Promise<unknown> =>
   browser.tabs.reload(tabId).then(() =>
     oneShotEventHandler(
