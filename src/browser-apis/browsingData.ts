@@ -4,7 +4,7 @@ import { browser } from 'webextension-polyfill-ts' // eslint-disable-line no-unu
 export const clearUserDataFromOneWeek = () => {
   const millisecondsPerWeek = 1000 * 60 * 60 * 24 * 7
   const oneWeekAgo = new Date().getTime() - millisecondsPerWeek
-  browser.browsingData.remove(
+  return browser.browsingData.remove(
     {
       since: oneWeekAgo
     },
