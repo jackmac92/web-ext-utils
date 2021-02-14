@@ -42,6 +42,7 @@
   "exclude": ["node_modules"],
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
+    "categorizeByGroup": true,
     "out": "docs"
   }
 }
