@@ -2,7 +2,7 @@ import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line
 import { oneShotEventHandler } from "../helpers/index";
 
 /**
- * @module tabs
+ * @category tabs
  */
 export const getActiveTab = (): Promise<Tabs.Tab> =>
   browser.windows
@@ -16,7 +16,7 @@ export const getActiveTab = (): Promise<Tabs.Tab> =>
     });
 
 /**
- * @module tabs
+ * @category tabs
  */
 export const tryGetActiveTab = (): Promise<Tabs.Tab | undefined> =>
   browser.windows
@@ -27,12 +27,12 @@ export const tryGetActiveTab = (): Promise<Tabs.Tab | undefined> =>
     });
 
 /**
- * @module tabs
+ * @category tabs
  */
 const getAllTabs = () => browser.tabs.query({});
 
 /**
- * @module tabs
+ * @category tabs
  */
 export const withEachTab = async <T>(
   cb: (a: Tabs.Tab) => Promise<T>
@@ -42,7 +42,7 @@ export const withEachTab = async <T>(
     .then(promises => Promise.all(promises));
 
 /**
- * @module tabs
+ * @category tabs
  */
 export const reloadTab = async (tabId: number): Promise<unknown> =>
   browser.tabs.reload(tabId).then(() =>

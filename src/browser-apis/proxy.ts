@@ -1,5 +1,8 @@
 import { browser } from "webextension-polyfill-ts";
 
+/**
+ * @hidden
+ */
 export const stolenDemoCode = () => {
   const config = {
     mode: "fixed_servers",

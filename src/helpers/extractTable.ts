@@ -7,6 +7,9 @@ const extractLinkedText = (node: HTMLElement): string => {
   return tmpNode.innerText.trim();
 };
 
+/**
+ * @category high-level
+ */
 export function extractTableData(table: HTMLTableElement) {
   let keys: string[] = [];
   if (table.tHead !== null) {

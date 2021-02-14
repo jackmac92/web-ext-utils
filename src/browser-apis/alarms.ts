@@ -1,5 +1,6 @@
 import { Alarms, browser } from "webextension-polyfill-ts";
 
+/** @hidden */
 export type intervalType = (a: () => void, b: number) => () => void;
 
 const createAlarm = (id: string, options: Alarms.CreateAlarmInfoType) => browser.alarms.create(id, options)

@@ -1,6 +1,9 @@
 import { textNotification } from "./notifications";
 import { browser } from "webextension-polyfill-ts";
 
+/**
+ * @category clipboard
+ */
 export function writeToClipboardViaNavigator(newClip: string): Promise<void> {
   // NB: not using this one since it just don't work for extensions :noidea:, getting an error that the dom is not focused
   return (
@@ -17,6 +20,9 @@ export function writeToClipboardViaNavigator(newClip: string): Promise<void> {
       })
   );
 }
+/**
+ * @category clipboard
+ */
 async function writeToClipboard(newClip: string): Promise<void> {
   const bg = browser.extension.getBackgroundPage(); // get the background page
   bg.document.body.innerHTML = ""; // clear the background page
@@ -41,6 +47,9 @@ async function writeToClipboard(newClip: string): Promise<void> {
   bg.document.execCommand("copy");
 }
 
+/**
+ * @category high-level
+ */
 export function promptToCopyViaNotification(
   message: string,
   contentToCopy: string

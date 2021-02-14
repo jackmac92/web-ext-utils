@@ -40,6 +40,9 @@ const toggleActiveState = async () => {
   return newState;
 };
 
+/**
+ * @category high-level
+ */
 export const toggleEventListenerViaBrowserActionFactory = async (
   eventObject: any,
   handler: (...args: any) => any

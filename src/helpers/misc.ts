@@ -5,8 +5,10 @@ import { nanoid } from "nanoid";
 /** @hidden */
 const installIdKey = "applicationId__unieq";
 
+/** @private */
 export const getInstallId = () => getLocalStorage<string, string>(installIdKey);
 
+/** @private */
 export const ensureInstallId = async (): Promise<string> => {
   let localId: string;
   try {
@@ -22,10 +24,13 @@ export const ensureInstallId = async (): Promise<string> => {
   return localId;
 };
 
+/** @private */
 export const getApplicationId = () => browser.runtime.id;
 
+/** @private */
 const defaultEventMatcher = () => Promise.resolve(true);
 
+/** @private */
 export interface EventTypeHelper {
   addListener: ((..._: any[]) => any);
   removeListener: ((..._: any[]) => any);

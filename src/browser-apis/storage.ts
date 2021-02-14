@@ -1,5 +1,8 @@
 import { browser } from "webextension-polyfill-ts";
 
+/**
+ * @category storage
+ */
 class BaseStorageApi {
   storageType: "local" | "sync";
   constructor(storageType: "local" | "sync") {
@@ -31,6 +34,9 @@ class BaseStorageApi {
   }
 }
 
+/**
+ * @category storage
+ */
 export const getStorage = (storageType: "local" | "sync") => <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
@@ -39,11 +45,17 @@ export const getStorage = (storageType: "local" | "sync") => <
   defaultValue?: V
 ): Promise<V> => new BaseStorageApi(storageType).get(storageKey, defaultValue);
 
+/**
+ * @category storage
+ */
 export const setStorage = (storageType: "local" | "sync") => (
   storageKey: string,
   value: JsonValue
 ) => new BaseStorageApi(storageType).set(storageKey, value);
 
+/**
+ * @category storage
+ */
 export const getSyncStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
@@ -52,6 +64,9 @@ export const getSyncStorage: <
   defaultValue?: V
 ) => Promise<V> = getStorage("sync");
 
+/**
+ * @category storage
+ */
 export const getLocalStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
@@ -60,17 +75,26 @@ export const getLocalStorage: <
   defaultValue?: V
 ) => Promise<V> = getStorage("local");
 
+/**
+ * @category storage
+ */
 export const getLocalStorageBoolean: (
   a: string,
   defaultValue?: boolean
 ) => Promise<boolean> = (a, defaultValue = false) =>
   getLocalStorage(a, defaultValue);
 
+/**
+ * @category storage
+ */
 export const setLocalStorage: (
   k: string,
   v: any | any[]
 ) => Promise<unknown> = setStorage("local");
 
+/**
+ * @category storage
+ */
 export const pushToLocalList: <T>(
   key: string,
   ...items: T[]
@@ -79,6 +103,9 @@ export const pushToLocalList: <T>(
     .then((existingValues) => setLocalStorage(k, [...existingValues, ...vals]))
     .then(() => Promise.resolve());
 
+/**
+ * @category storage
+ */
 export const popFromLocalList: <T>(key: string) => Promise<T> = (k) =>
   getLocalStorage(k, []).then(([head, ...tail]) =>
     setLocalStorage(k, tail).then(() => head)

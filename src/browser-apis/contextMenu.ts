@@ -13,6 +13,9 @@ const defaultCreateMenuOptions = {
 
 type clickHandler = (c: Menus.OnClickData, t: Tabs.Tab | undefined) => void
 
+/**
+ * @category contextMenu
+ */
 export const createContextMenu = (
   menuTitle: string,
   handler: (

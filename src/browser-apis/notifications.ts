@@ -38,15 +38,17 @@ const _setupNotificationOverallClickHandler = (action: unknown) => (
   browser.notifications.onClicked.addListener(handler);
 };
 
+/** @hidden */
 export interface NotificationButton {
   title: string;
   iconUrl?: string;
 }
 
+/** @hidden */
 export type NotificationButtonTuple = [NotificationButton, () => void];
 
 /**
- * @category Notifications
+ * @category notifications
  */
 export const buttonNotification = (
   title: string,
@@ -82,7 +84,7 @@ export const buttonNotification = (
 };
 
 /**
- * @category Notifications
+ * @category notifications
  */
 export const textNotification = (
   title: string,

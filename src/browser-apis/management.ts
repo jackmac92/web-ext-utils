@@ -1,5 +1,8 @@
 import { browser, Management } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
 
+/**
+ * @category extensionManagement
+ */
 export const listExtensions = async (
   excludeSelf = true
 ): Promise<Management.ExtensionInfo[]> => {
@@ -18,9 +21,16 @@ export const listExtensions = async (
     .filter(maybeFilterSelf);
 };
 
+/**
+ * @category extensionManagement
+ */
 export const disableExtensions = (extList: Management.ExtensionInfo[]) =>
   Promise.all(
     extList.map(({ id }) => browser.management.setEnabled(id, false))
   );
+
+/**
+ * @category extensionManagement
+ */
 export const enableExtensions = (extList: Management.ExtensionInfo[]) =>
   Promise.all(extList.map(({ id }) => browser.management.setEnabled(id, true)));

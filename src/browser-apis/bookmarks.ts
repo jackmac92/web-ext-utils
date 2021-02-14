@@ -1,5 +1,8 @@
 import { browser, Bookmarks } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
 
+/**
+ * @category bookmarks
+ */
 export const createBookmark = (url: string, title: string) =>
   browser.bookmarks.create({ url, title });
 
@@ -20,8 +23,8 @@ const getChildBookmarks = (
   });
 
 /**
- * @returns An array of bookmark entriies
  * @category bookmarks
+ * @returns An array of bookmark entriies
  */
 export const exportAllBookmarks = async () => {
   const allBookmarks = await browser.bookmarks.getTree();

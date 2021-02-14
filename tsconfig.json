@@ -43,6 +43,8 @@
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
     "categorizeByGroup": true,
+    "categoryOrder": ["high-level", "tabs", "storage"],
+    "readme": "none",
     "out": "docs"
   }
 }

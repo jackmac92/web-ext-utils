@@ -28,6 +28,9 @@ const hasPermission = async (
   return false
 }
 
+/**
+ * @category permissions
+ */
 export const hasExtensionPermission = async (
   permission: string
 ): Promise<boolean> =>
@@ -35,11 +38,17 @@ export const hasExtensionPermission = async (
     permissions: [permission]
   })
 
+/**
+ * @category permissions
+ */
 export const hasDomainPermission = async (domain: string): Promise<boolean> =>
   hasPermission({
     origins: ['https', 'http'].map(h => `${h}://${domain}/`)
   })
 
+/**
+ * @category high-level
+ */
 export const proposePendingPermissionsOnUserAction = () => {
   oneShotEventHandler(browser.webNavigation.onCompleted).then(() => {
     getLocalStorage('request_perms_when_ready').then(permsToAdd => {
