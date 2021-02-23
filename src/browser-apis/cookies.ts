@@ -11,10 +11,10 @@ export const getCookiesFromDomain = (domain: string) => getCookies({ domain });
 /**
  * @category cookies
  */
-export const listenForCookieChanges = () => {
+export const listenForCookieChanges = (onChange: (a: Cookies.OnChangedChangeInfoType) => never) => {
   browser.cookies.onChanged.addListener(
     (changeInfo: Cookies.OnChangedChangeInfoType) => {
-      console.dir(changeInfo);
+      onChange(changeInfo)
     }
   );
 };
