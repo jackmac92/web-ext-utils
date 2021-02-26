@@ -1,6 +1,5 @@
 {
   "name": "browser-ext-utilz",
-  "version": "1.23.17",
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
