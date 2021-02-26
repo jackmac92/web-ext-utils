@@ -2,6 +2,7 @@
   "name": "browser-ext-utilz",
   "version": "1.23.17",
   "main": "src/index.ts",
+  "license": "MIT",
   "scripts": {
     "prerun-api-extractor": "yarn tsc",
     "run-api-extractor": "api-extractor run",
