@@ -4,8 +4,8 @@ import { browser, Windows } from "webextension-polyfill-ts"; // eslint-disable-l
 export const createSidekickWindow = async (
   url: string | string[]
 ): Promise<Windows.Window> => {
-  const window: Windows.Window = await browser.windows.getCurrent();
-  const { id, height, width, top, left } = window;
+  const wndw: Windows.Window = await browser.windows.getCurrent();
+  const { id, height, width, top, left } = wndw;
   if (
     !(
       typeof height === "number" &&
