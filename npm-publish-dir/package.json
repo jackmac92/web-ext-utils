@@ -1,6 +1,7 @@
 {
   "name": "browser-ext-utilz",
-  "version": "2.0.0",
+  "version": "1.23.17",
+  "license": "MIT",
   "files": [
     "dist-*/",
     "bin/"
