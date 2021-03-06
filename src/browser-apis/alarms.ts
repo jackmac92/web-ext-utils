@@ -1,3 +1,4 @@
+import { differenceInMilliseconds } from "date-fns";
 import { Alarms, browser } from "webextension-polyfill-ts";
 
 /** @hidden */
@@ -55,4 +56,16 @@ export const browserSetInterval: intervalType = (cb, ms) => {
   };
   browser.alarms.onAlarm.addListener(alarmHandler);
   return cleanup;
+};
+
+/**
+ * @param cb - Callback to use in the interval func
+ * @param at - Datetime when cb should run
+ *
+ * @returns Function to cancel the interval
+ * @category alarms
+ */
+export const browserRunAt = (cb, at: Date) => {
+  const msTilRun = differenceInMilliseconds(at, Date.now());
+  return browserSetTimeout(cb, msTilRun);
 };

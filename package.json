@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "callbag-from-async-iter": "^1.0.0",
+    "date-fns": "^2.19.0",
     "nanoid": "^3.0.2",
     "webextension-polyfill-ts": "^0.24.0"
   },
