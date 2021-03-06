@@ -1,6 +1,5 @@
 {
   "name": "pika-pack-template",
-  "version": "0.0.2",
   "main": "src/index.ts",
   "@pika/pack": {
     "pipeline": [
