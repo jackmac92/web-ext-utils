@@ -65,7 +65,7 @@ export const browserSetInterval: intervalType = (cb, ms) => {
  * @returns Function to cancel the interval
  * @category alarms
  */
-export const browserRunAt = (cb, at: Date) => {
+export const browserRunAt = (cb: () => never, at: Date) => {
   const msTilRun = differenceInMilliseconds(at, Date.now());
   return browserSetTimeout(cb, msTilRun);
 };

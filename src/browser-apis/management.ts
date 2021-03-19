@@ -11,7 +11,7 @@ export const listExtensions = async (
     if (!excludeSelf) {
       return () => true;
     }
-    const extUrl = await browser.runtime.getURL("");
+    const extUrl = browser.runtime.getURL("");
     const selfId = extUrl.replace("chrome-extension://", "").replace("/", "");
     return (z: { id: string }) => z.id !== selfId;
   })();
