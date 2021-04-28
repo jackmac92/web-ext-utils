@@ -47,7 +47,7 @@ export const hasDomainPermission = async (domain: string): Promise<boolean> =>
   })
 
 /**
- * @category high-level
+ * @hidden
  */
 export const proposePendingPermissionsOnUserAction = () => {
   oneShotEventHandler(browser.webNavigation.onCompleted).then(() => {
