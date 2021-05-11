@@ -1,3 +1,4 @@
+import type { JsonValue, JsonObject } from 'type-fest';
 import { browser } from "webextension-polyfill-ts";
 
 /**
@@ -20,8 +21,13 @@ class BaseStorageApi {
           if (defaultValue === undefined && !r) {
             reject(result);
           }
-          // @ts-expect-error
-          resolve(r || defaultValue);
+          resolve(
+            // @ts-expect-error
+            r || defaultValue
+          );
+        }).catch((err) => {
+          console.warn("Storage lookup failed!")
+          console.error(err)
         });
     });
   }
@@ -59,7 +65,7 @@ export const setStorage = (storageType: "local" | "sync") => (
 export const getSyncStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
->(
+  >(
   a: T,
   defaultValue?: V
 ) => Promise<V> = getStorage("sync");
@@ -70,7 +76,7 @@ export const getSyncStorage: <
 export const getLocalStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
->(
+  >(
   a: T,
   defaultValue?: V
 ) => Promise<V> = getStorage("local");
@@ -82,7 +88,7 @@ export const getLocalStorageBoolean: (
   a: string,
   defaultValue?: boolean
 ) => Promise<boolean> = (a, defaultValue = false) =>
-  getLocalStorage(a, defaultValue);
+    getLocalStorage(a, defaultValue);
 
 /**
  * @category storage
@@ -99,9 +105,9 @@ export const pushToLocalList: <T>(
   key: string,
   ...items: T[]
 ) => Promise<void> = (k, ...vals) =>
-  getLocalStorage(k, [])
-    .then((existingValues) => setLocalStorage(k, [...existingValues, ...vals]))
-    .then(() => Promise.resolve());
+    getLocalStorage(k, [])
+      .then((existingValues) => setLocalStorage(k, [...existingValues, ...vals]))
+      .then(() => Promise.resolve());
 
 /**
  * @category storage

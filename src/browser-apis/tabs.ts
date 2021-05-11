@@ -1,4 +1,5 @@
-import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import { browser } from "webextension-polyfill-ts";
+import type { Tabs } from "webextension-polyfill-ts";
 import { oneShotEventHandler } from "../helpers/index";
 
 /**
