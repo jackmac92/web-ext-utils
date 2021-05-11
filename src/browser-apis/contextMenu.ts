@@ -1,3 +1,4 @@
+import { Promisable } from 'type-fest';
 import { browser, Tabs, Menus } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 
 const defaultCreateMenuOptions = {
@@ -22,7 +23,7 @@ export const createContextMenu = (
     removeContextMenuCb: () => void,
     clickInfo: Menus.OnClickData,
     tab?: Tabs.Tab
-  ) => void,
+  ) => Promisable<void>,
   options = defaultCreateMenuOptions
 ) => {
   const itemId = `${Math.floor(Math.random() * 1000000000)}`
@@ -40,10 +41,11 @@ export const createContextMenu = (
       }
       const clickListener: clickHandler = (e, tab) => {
         if (e.menuItemId === itemId) {
-          handler(cleanupContextMenu, e, tab)
-          if (options.singleUse) {
-            cleanupContextMenu()
-          }
+          Promise.resolve(handler(cleanupContextMenu, e, tab)).then(() => {
+            if (options.singleUse) {
+              cleanupContextMenu()
+            }
+          })
         }
       }
       browser.contextMenus.onClicked.addListener(clickListener)
