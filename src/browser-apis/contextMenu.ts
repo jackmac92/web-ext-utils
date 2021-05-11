@@ -1,11 +1,15 @@
 import { Promisable } from 'type-fest';
 import { browser, Tabs, Menus } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 
+
+interface ctxMenuOpts {
+  menuOptions: Menus.CreateCreatePropertiesType,
+  singleUse?: boolean
+}
 const defaultCreateMenuOptions = {
   menuOptions: {},
   singleUse: false
 }
-
 // browser.contextMenus.create({
 //   id: "separator-1",
 //   type: "separator",
@@ -24,7 +28,7 @@ export const createContextMenu = (
     clickInfo: Menus.OnClickData,
     tab?: Tabs.Tab
   ) => Promisable<void>,
-  options = defaultCreateMenuOptions
+  options: ctxMenuOpts = defaultCreateMenuOptions
 ) => {
   const itemId = `${Math.floor(Math.random() * 1000000000)}`
   return browser.contextMenus.create(
@@ -42,7 +46,7 @@ export const createContextMenu = (
       const clickListener: clickHandler = (e, tab) => {
         if (e.menuItemId === itemId) {
           Promise.resolve(handler(cleanupContextMenu, e, tab)).then(() => {
-            if (options.singleUse) {
+            if (options?.singleUse) {
               cleanupContextMenu()
             }
           })
