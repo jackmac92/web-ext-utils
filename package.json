@@ -5,7 +5,7 @@
   "scripts": {
     "prerun-api-extractor": "yarn tsc",
     "run-api-extractor": "api-extractor run",
-    "postbuild": "yarn run-api-extractor",
+    "postbuild": "echo 'skipping' || yarn run-api-extractor",
     "test": "jest",
     "lint": "eslint src/**/*s",
     "check-commit": "lint-staged && jest --changedSince=HEAD",
