@@ -1,3 +1,4 @@
+import type { JsonValue } from 'type-fest';
 import { browser, Permissions } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
 import { oneShotEventHandler } from '../helpers/index'
 import {
@@ -22,7 +23,7 @@ const hasPermission = async (
       return true
     }
   } catch (e) {
-    await pushToLocalList('request_perms_when_ready', perms)
+    await pushToLocalList('request_perms_when_ready', perms as JsonValue)
   }
 
   return false

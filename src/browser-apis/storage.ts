@@ -31,9 +31,10 @@ class BaseStorageApi {
         });
     });
   }
-  set(storageKey: string, value: JsonValue) {
+  set<T extends NonNullable<JsonValue>, V extends JsonValue>(storageKey: T, value: V) {
     return new Promise((resolve) => {
       browser.storage[this.storageType]
+        // @ts-expect-error
         .set({ [storageKey]: value })
         .then((result) => resolve(result));
     });
@@ -54,9 +55,12 @@ export const getStorage = (storageType: "local" | "sync") => <
 /**
  * @category storage
  */
-export const setStorage = (storageType: "local" | "sync") => (
-  storageKey: string,
-  value: JsonValue
+export const setStorage = (storageType: "local" | "sync") => <
+  T extends NonNullable<JsonValue>,
+  V extends JsonValue
+>(
+  storageKey: T,
+  value: V
 ) => new BaseStorageApi(storageType).set(storageKey, value);
 
 /**
@@ -81,6 +85,11 @@ export const getLocalStorage: <
   defaultValue?: V
 ) => Promise<V> = getStorage("local");
 
+export const localStorageAtom = <ValueShape extends JsonValue>(key: NonNullable<JsonValue>) => ({
+  get: (): Promise<ValueShape> => getLocalStorage<NonNullable<JsonValue>, ValueShape>(key),
+  set: (v: ValueShape): Promise<unknown> => setLocalStorage<NonNullable<JsonValue>, ValueShape>(key, v)
+})
+
 /**
  * @category storage
  */
@@ -93,15 +102,18 @@ export const getLocalStorageBoolean: (
 /**
  * @category storage
  */
-export const setLocalStorage: (
-  k: string,
-  v: any | any[]
+export const setLocalStorage: <
+  T extends NonNullable<JsonValue>,
+  V extends JsonValue
+  >(
+  k: T,
+  v: V
 ) => Promise<unknown> = setStorage("local");
 
 /**
  * @category storage
  */
-export const pushToLocalList: <T>(
+export const pushToLocalList: <T extends JsonValue>(
   key: string,
   ...items: T[]
 ) => Promise<void> = (k, ...vals) =>
