@@ -46,7 +46,7 @@ export const createContextMenu = (
       const clickListener: clickHandler = (e, tab) => {
         if (e.menuItemId === itemId) {
           Promise.resolve(handler(cleanupContextMenu, e, tab)).then(() => {
-            if (options?.singleUse) {
+            if (options.singleUse) {
               cleanupContextMenu()
             }
           })
