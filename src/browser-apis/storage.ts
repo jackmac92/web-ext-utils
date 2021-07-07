@@ -2,12 +2,14 @@ import type { JsonValue, JsonObject } from "type-fest";
 import { useState } from "react";
 import { browser } from "webextension-polyfill-ts";
 
+type storageBackend = "local" | "sync";
+
 /**
  * @category storage
  */
 class BaseStorageApi {
-  storageType: "local" | "sync";
-  constructor(storageType: "local" | "sync") {
+  storageType: storageBackend
+  constructor(storageType: storageBackend) {
     this.storageType = storageType;
   }
   get<T extends NonNullable<JsonValue>, V extends JsonValue>(
@@ -49,7 +51,7 @@ class BaseStorageApi {
 /**
  * @category storage
  */
-export const getStorage = (storageType: "local" | "sync") => <
+export const getStorage = (storageType: storageBackend) => <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
 >(
@@ -60,7 +62,7 @@ export const getStorage = (storageType: "local" | "sync") => <
 /**
  * @category storage
  */
-export const setStorage = (storageType: "local" | "sync") => <
+export const setStorage = (storageType: storageBackend) => <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
 >(
@@ -136,12 +138,22 @@ export const pushToLocalList: <T extends JsonValue>(
 /**
  * @category storage
  */
+export const updateStorage = <T extends JsonValue>(storageType: storageBackend) => async (key: string, cb: (a: T) => Promise<T>) => {
+    const currVal = await getStorage(storageType)(key)
+    // @ts-expect-error
+    const updatedVal = await Promise.resolve(cb(currVal))
+    return setStorage(storageType)(key, updatedVal)
+}
+
+/**
+ * @category storage
+ */
 export const popFromLocalList: <T>(key: string) => Promise<T> = (k) =>
   getLocalStorage(k, []).then(([head, ...tail]) =>
     setLocalStorage(k, tail).then(() => head)
   );
 
-const useStorage = <StoredType>(storageType: "local" | "sync") => {
+const useStorage = <StoredType>(storageType: storageBackend) => {
   const baseStorageApi = new BaseStorageApi(storageType);
   return (key: string, initialValue: StoredType) => {
     if (typeof window === "undefined") {
