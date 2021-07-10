@@ -93,10 +93,11 @@ export const getLocalStorage: <
  * @category storage
  */
 export const localStorageAtom = <ValueShape extends JsonValue>(
-  key: NonNullable<JsonValue>
+  key: NonNullable<JsonValue>,
+  defaultValue?: ValueShape
 ) => ({
   get: (): Promise<ValueShape> =>
-    getLocalStorage<NonNullable<JsonValue>, ValueShape>(key),
+    getLocalStorage<NonNullable<JsonValue>, ValueShape>(key, defaultValue),
   set: (v: ValueShape): Promise<unknown> =>
     setLocalStorage<NonNullable<JsonValue>, ValueShape>(key, v),
 });
