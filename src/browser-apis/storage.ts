@@ -16,14 +16,11 @@ class BaseStorageApi {
     storageKey: T,
     defaultValue?: V
   ): Promise<V> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       browser.storage[this.storageType]
         .get([storageKey])
         .then((result: JsonObject) => {
           const r = result[storageKey.toString()];
-          if (defaultValue === undefined && !r) {
-            reject(result);
-          }
           resolve(
             // @ts-expect-error
             r || defaultValue
