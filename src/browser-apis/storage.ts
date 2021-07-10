@@ -1,5 +1,5 @@
 import type { JsonValue, JsonObject } from "type-fest";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { browser } from "webextension-polyfill-ts";
 
 type storageBackend = "local" | "sync";
@@ -162,19 +162,18 @@ const useStorage = <StoredType>(storageType: storageBackend) => {
         },
       ];
     }
+
     // State to store our value
     // Pass initial state function to useState so logic is only executed once
-    const [storedValue, setStoredValue] = useState(() => {
-      try {
-        // Get from local storage by key
-        const item = baseStorageApi.get(key);
-        // Parse stored json or if none return initialValue
-        return item
-      } catch (error) {
-        // If error also return initialValue
-        return initialValue;
-      }
-    });
+    const [storedValue, setStoredValue] = useState(initialValue)
+    useEffect(() => {
+      baseStorageApi.get(key).then((val) => {
+        if (val) {
+          // @ts-expect-error
+          setStoredValue(val)
+        }
+      })
+    }, []);
 
     // Return a wrapped version of useState's setter function that ...
     // ... persists the new value to localStorage.
