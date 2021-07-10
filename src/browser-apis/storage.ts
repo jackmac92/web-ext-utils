@@ -73,7 +73,7 @@ export const setStorage = (storageType: storageBackend) => <
 export const getSyncStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
->(
+  >(
   a: T,
   defaultValue?: V
 ) => Promise<V> = getStorage("sync");
@@ -84,7 +84,7 @@ export const getSyncStorage: <
 export const getLocalStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
->(
+  >(
   a: T,
   defaultValue?: V
 ) => Promise<V> = getStorage("local");
@@ -96,8 +96,8 @@ export const localStorageAtom = <ValueShape extends JsonValue>(
   key: NonNullable<JsonValue>,
   defaultValue?: ValueShape
 ) => ({
-  get: (): Promise<ValueShape> =>
-    getLocalStorage<NonNullable<JsonValue>, ValueShape>(key, defaultValue),
+  get: (invocationSpecificDefaultValue?: ValueShape): Promise<ValueShape> =>
+    getLocalStorage<NonNullable<JsonValue>, ValueShape>(key, invocationSpecificDefaultValue || defaultValue),
   set: (v: ValueShape): Promise<unknown> =>
     setLocalStorage<NonNullable<JsonValue>, ValueShape>(key, v),
 });
@@ -109,7 +109,7 @@ export const getLocalStorageBoolean: (
   a: string,
   defaultValue?: boolean
 ) => Promise<boolean> = (a, defaultValue = false) =>
-  getLocalStorage(a, defaultValue);
+    getLocalStorage(a, defaultValue);
 
 /**
  * @category storage
@@ -117,7 +117,7 @@ export const getLocalStorageBoolean: (
 export const setLocalStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
->(
+  >(
   k: T,
   v: V
 ) => Promise<unknown> = setStorage("local");
@@ -129,18 +129,18 @@ export const pushToLocalList: <T extends JsonValue>(
   key: string,
   ...items: T[]
 ) => Promise<void> = (k, ...vals) =>
-  getLocalStorage(k, [])
-    .then((existingValues) => setLocalStorage(k, [...existingValues, ...vals]))
-    .then(() => Promise.resolve());
+    getLocalStorage(k, [])
+      .then((existingValues) => setLocalStorage(k, [...existingValues, ...vals]))
+      .then(() => Promise.resolve());
 
 /**
  * @category storage
  */
 export const updateStorage = <T extends JsonValue>(storageType: storageBackend) => async (key: string, cb: (a: T) => Promise<T>) => {
-    const currVal = await getStorage(storageType)(key)
-    // @ts-expect-error
-    const updatedVal = await Promise.resolve(cb(currVal))
-    return setStorage(storageType)(key, updatedVal)
+  const currVal = await getStorage(storageType)(key)
+  // @ts-expect-error
+  const updatedVal = await Promise.resolve(cb(currVal))
+  return setStorage(storageType)(key, updatedVal)
 }
 
 /**
