@@ -177,7 +177,7 @@ const useStorage = <StoredType>(storageType: storageBackend) => {
 
     // Return a wrapped version of useState's setter function that ...
     // ... persists the new value to localStorage.
-    const setValue = (value: StoredType) => {
+    const setValue = (value: StoredType | ((a: StoredType) => StoredType)) => {
       if (typeof window == "undefined") {
         console.warn(
           `Tried setting localStorage key “${key}” even though environment is not a client`
@@ -189,6 +189,7 @@ const useStorage = <StoredType>(storageType: storageBackend) => {
         const valueToStore =
           value instanceof Function ? value(storedValue) : value;
         // Save to local storage
+        // @ts-expect-error
         baseStorageApi.set(key, valueToStore);
         // Save state
         setStoredValue(valueToStore);
