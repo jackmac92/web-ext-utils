@@ -2,3 +2,4 @@ pkg
 npm-publish-dir
 yarn-error.log
 lib
+node_modules
