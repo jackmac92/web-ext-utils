@@ -3,9 +3,9 @@
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
-    "prerun-api-extractor": "yarn tsc",
+    "prerun-api-extractor": "tsc",
     "run-api-extractor": "api-extractor run",
-    "postbuild": "echo 'skipping' || yarn run-api-extractor",
+    "postbuild": "echo 'skipping' || npm run run-api-extractor",
     "test": "jest",
     "lint": "eslint src/**/*s",
     "check-commit": "lint-staged && jest --changedSince=HEAD",
