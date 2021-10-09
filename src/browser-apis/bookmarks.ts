@@ -1,4 +1,4 @@
-import { browser, Bookmarks } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import browser, { Bookmarks } from "webextension-polyfill"; // eslint-disable-line no-unused-vars
 
 /**
  * @category bookmarks

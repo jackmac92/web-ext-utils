@@ -1,4 +1,4 @@
-import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import browser, { Tabs } from "webextension-polyfill"; // eslint-disable-line no-unused-vars
 import { getLocalStorageBoolean, setLocalStorage } from "./storage";
 
 /** @hidden */

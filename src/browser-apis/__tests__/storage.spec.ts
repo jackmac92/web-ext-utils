@@ -1,5 +1,5 @@
 import { mocked } from "ts-jest/utils";
-import { browser } from "webextension-polyfill-ts";
+import browser from 'webextension-polyfill';
 import { getLocalStorage, getSyncStorage } from "../storage";
 
 const mockBrowser = mocked(browser, true);

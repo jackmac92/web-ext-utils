@@ -1,4 +1,4 @@
-import { browser } from "webextension-polyfill-ts";
+import browser from 'webextension-polyfill';
 
 let allPermissions: string[];
 browser.permissions.getAll().then(allPerms => {

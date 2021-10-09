@@ -1,4 +1,4 @@
-import { browser } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import browser from 'webextension-polyfill'; // eslint-disable-line no-unused-vars
 
 const injectBannerOnPage = (message: string, bannerUuid: string) => {
   const banner = document.createElement("div");

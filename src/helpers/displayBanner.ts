@@ -1,4 +1,4 @@
-import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import browser, { Tabs } from "webextension-polyfill"; // eslint-disable-line no-unused-vars
 import { nanoid } from "nanoid";
 import { getActiveTab } from "../browser-apis/tabs";
 import { oneShotEventHandler } from "./misc";

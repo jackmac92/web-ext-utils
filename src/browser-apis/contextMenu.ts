@@ -1,5 +1,5 @@
 import { Promisable } from 'type-fest';
-import { browser, Tabs, Menus } from 'webextension-polyfill-ts' // eslint-disable-line no-unused-vars
+import browser, { Tabs, Menus } from 'webextension-polyfill' // eslint-disable-line no-unused-vars
 
 
 interface ctxMenuOpts {

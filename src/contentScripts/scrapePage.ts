@@ -1,4 +1,4 @@
-import { browser } from "webextension-polyfill-ts";
+import browser from 'webextension-polyfill';
 
 type validationHandler = (el: any) => boolean;
 type locateElementHandler = () => any;

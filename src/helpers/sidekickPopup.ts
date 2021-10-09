@@ -1,4 +1,4 @@
-import { browser, Windows } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import browser, { Windows } from "webextension-polyfill"; // eslint-disable-line no-unused-vars
 
 /** @hidden */
 export const createSidekickWindow = async (

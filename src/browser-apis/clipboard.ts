@@ -1,5 +1,5 @@
 import { textNotification } from "./notifications";
-import { browser } from "webextension-polyfill-ts";
+import browser from 'webextension-polyfill';
 
 /**
  * @category clipboard

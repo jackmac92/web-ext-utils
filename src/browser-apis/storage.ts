@@ -1,6 +1,6 @@
 import type { JsonValue, JsonObject } from "type-fest";
 import { useState, useEffect } from "react";
-import { browser } from "webextension-polyfill-ts";
+import browser from 'webextension-polyfill';
 
 type storageBackend = "local" | "sync";
 

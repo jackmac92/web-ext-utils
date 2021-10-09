@@ -1,10 +1,11 @@
 import { differenceInMilliseconds } from "date-fns";
-import { Alarms, browser } from "webextension-polyfill-ts";
+import browser, { Alarms } from "webextension-polyfill";
 
 /** @hidden */
 export type intervalType = (a: () => void, b: number) => () => void;
 
-const createAlarm = (id: string, options: Alarms.CreateAlarmInfoType) => browser.alarms.create(id, options)
+const createAlarm = (id: string, options: Alarms.CreateAlarmInfoType) =>
+  browser.alarms.create(id, options);
 
 /**
  * @param cb - Callback to use in the timeout func
@@ -16,7 +17,7 @@ const createAlarm = (id: string, options: Alarms.CreateAlarmInfoType) => browser
 export const browserSetTimeout: intervalType = (cb, ms) => {
   const cbUuid = `${Math.random()}`;
   createAlarm(cbUuid, {
-    when: Date.now() + ms
+    when: Date.now() + ms,
   });
   const cleanup = () => {
     browser.alarms.onAlarm.removeListener(alarmHandler);
@@ -43,7 +44,7 @@ export const browserSetInterval: intervalType = (cb, ms) => {
   const cbUuid = `${Math.random()}`;
   createAlarm(cbUuid, {
     periodInMinutes: ms / 1000 / 60,
-    when: Date.now() + ms
+    when: Date.now() + ms,
   });
   const cleanup = () => {
     browser.alarms.onAlarm.removeListener(alarmHandler);

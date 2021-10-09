@@ -1,4 +1,4 @@
-import { browser } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import browser from 'webextension-polyfill'; // eslint-disable-line no-unused-vars
 // @ts-ignore
 import fromAsyncIter from "callbag-from-async-iter";
 import { oneShotEventHandler } from "../helpers/misc";

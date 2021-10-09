@@ -1,4 +1,4 @@
-import { browser, Tabs } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import browser, { Tabs } from "webextension-polyfill"; // eslint-disable-line no-unused-vars
 import { JsonValue } from "type-fest"; // eslint-disable-line no-unused-vars
 import { getActiveTab } from "../browser-apis/tabs";
 

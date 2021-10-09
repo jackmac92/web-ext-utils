@@ -1,5 +1,5 @@
-import { browser } from "webextension-polyfill-ts";
-import type { Tabs } from "webextension-polyfill-ts";
+import browser from 'webextension-polyfill';
+import type { Tabs } from "webextension-polyfill";
 import { oneShotEventHandler } from "../helpers/index";
 
 /**

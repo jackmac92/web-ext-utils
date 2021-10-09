@@ -1,4 +1,4 @@
-import { browser, Management } from "webextension-polyfill-ts"; // eslint-disable-line no-unused-vars
+import browser, { Management } from "webextension-polyfill"; // eslint-disable-line no-unused-vars
 
 /**
  * @category extensionManagement
