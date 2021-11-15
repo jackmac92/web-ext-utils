@@ -53,6 +53,7 @@
     "callbag-from-async-iter": "^1.0.0",
     "date-fns": "^2.19.0",
     "nanoid": "^3.0.2",
+    "type-fest": "^2.5.3",
     "webextension-polyfill": "^0.8.0"
   },
   "optionalDependencies": {

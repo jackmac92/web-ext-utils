@@ -194,7 +194,6 @@ const useStorage = <StoredType>(storageType: storageBackend) => {
         const valueToStore =
           value instanceof Function ? value(storedValue) : value;
         // Save to local storage
-        // @ts-expect-error
         baseStorageApi.set(key, valueToStore);
         // Save state
         setStoredValue(valueToStore);

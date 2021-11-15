@@ -28,6 +28,7 @@ specifiers:
   pre-commit: ^1.2.2
   react: ^17.0.2
   ts-jest: ^27.0.3
+  type-fest: ^2.5.3
   typescript: ^4.4.4
   webextension-polyfill: ^0.8.0
 
@@ -35,6 +36,7 @@ dependencies:
   callbag-from-async-iter: 1.0.0
   date-fns: 2.19.0
   nanoid: 3.1.10
+  type-fest: 2.5.3
   webextension-polyfill: 0.8.0
 
 optionalDependencies:
@@ -6620,6 +6622,11 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
     dev: true
+
+  /type-fest/2.5.3:
+    resolution: {integrity: sha512-7VNmE7FlsrdcWjKbtuRuynZz96Gmf35p5DvoR2tbceNP0vd58ISx87PvUUInlhtRC49vSX6qlxEKc7AoiHRirg==}
+    engines: {node: '>=12.20'}
+    dev: false
 
   /typedarray-to-buffer/3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
