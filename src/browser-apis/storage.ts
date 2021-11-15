@@ -1,6 +1,6 @@
 import type { JsonValue, JsonObject } from "type-fest";
 import { useState, useEffect } from "react";
-import browser from 'webextension-polyfill';
+import browser from "webextension-polyfill";
 
 type storageBackend = "local" | "sync";
 
@@ -8,7 +8,7 @@ type storageBackend = "local" | "sync";
  * @category storage
  */
 class BaseStorageApi {
-  storageType: storageBackend
+  storageType: storageBackend;
   constructor(storageType: storageBackend) {
     this.storageType = storageType;
   }
@@ -48,24 +48,24 @@ class BaseStorageApi {
 /**
  * @category storage
  */
-export const getStorage = (storageType: storageBackend) => <
-  T extends NonNullable<JsonValue>,
-  V extends JsonValue
->(
-  storageKey: T,
-  defaultValue?: V
-): Promise<V> => new BaseStorageApi(storageType).get(storageKey, defaultValue);
+export const getStorage =
+  (storageType: storageBackend) =>
+  <T extends NonNullable<JsonValue>, V extends JsonValue>(
+    storageKey: T,
+    defaultValue?: V
+  ): Promise<V> =>
+    new BaseStorageApi(storageType).get(storageKey, defaultValue);
 
 /**
  * @category storage
  */
-export const setStorage = (storageType: storageBackend) => <
-  T extends NonNullable<JsonValue>,
-  V extends JsonValue
->(
-  storageKey: T,
-  value: V
-) => new BaseStorageApi(storageType).set(storageKey, value);
+export const setStorage =
+  (storageType: storageBackend) =>
+  <T extends NonNullable<JsonValue>, V extends JsonValue>(
+    storageKey: T,
+    value: V
+  ) =>
+    new BaseStorageApi(storageType).set(storageKey, value);
 
 /**
  * @category storage
@@ -73,7 +73,7 @@ export const setStorage = (storageType: storageBackend) => <
 export const getSyncStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
-  >(
+>(
   a: T,
   defaultValue?: V
 ) => Promise<V> = getStorage("sync");
@@ -84,7 +84,7 @@ export const getSyncStorage: <
 export const getLocalStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
-  >(
+>(
   a: T,
   defaultValue?: V
 ) => Promise<V> = getStorage("local");
@@ -97,7 +97,10 @@ export const localStorageAtom = <ValueShape extends JsonValue>(
   defaultValue?: ValueShape
 ) => ({
   get: (invocationSpecificDefaultValue?: ValueShape): Promise<ValueShape> =>
-    getLocalStorage<NonNullable<JsonValue>, ValueShape>(key, invocationSpecificDefaultValue || defaultValue),
+    getLocalStorage<NonNullable<JsonValue>, ValueShape>(
+      key,
+      invocationSpecificDefaultValue || defaultValue
+    ),
   set: (v: ValueShape): Promise<unknown> =>
     setLocalStorage<NonNullable<JsonValue>, ValueShape>(key, v),
 });
@@ -109,7 +112,7 @@ export const getLocalStorageBoolean: (
   a: string,
   defaultValue?: boolean
 ) => Promise<boolean> = (a, defaultValue = false) =>
-    getLocalStorage(a, defaultValue);
+  getLocalStorage(a, defaultValue);
 
 /**
  * @category storage
@@ -117,7 +120,7 @@ export const getLocalStorageBoolean: (
 export const setLocalStorage: <
   T extends NonNullable<JsonValue>,
   V extends JsonValue
-  >(
+>(
   k: T,
   v: V
 ) => Promise<unknown> = setStorage("local");
@@ -129,19 +132,21 @@ export const pushToLocalList: <T extends JsonValue>(
   key: string,
   ...items: T[]
 ) => Promise<void> = (k, ...vals) =>
-    getLocalStorage(k, [])
-      .then((existingValues) => setLocalStorage(k, [...existingValues, ...vals]))
-      .then(() => Promise.resolve());
+  getLocalStorage(k, [])
+    .then((existingValues) => setLocalStorage(k, [...existingValues, ...vals]))
+    .then(() => Promise.resolve());
 
 /**
  * @category storage
  */
-export const updateStorage = <T extends JsonValue>(storageType: storageBackend) => async (key: string, cb: (a: T) => Promise<T>) => {
-  const currVal = await getStorage(storageType)(key)
-  // @ts-expect-error
-  const updatedVal = await Promise.resolve(cb(currVal))
-  return setStorage(storageType)(key, updatedVal)
-}
+export const updateStorage =
+  <T extends JsonValue>(storageType: storageBackend) =>
+  async (key: string, cb: (a: T) => Promise<T>) => {
+    const currVal = await getStorage(storageType)(key);
+    // @ts-expect-error
+    const updatedVal = await Promise.resolve(cb(currVal));
+    return setStorage(storageType)(key, updatedVal);
+  };
 
 /**
  * @category storage
@@ -165,14 +170,14 @@ const useStorage = <StoredType>(storageType: storageBackend) => {
 
     // State to store our value
     // Pass initial state function to useState so logic is only executed once
-    const [storedValue, setStoredValue] = useState(initialValue)
+    const [storedValue, setStoredValue] = useState(initialValue);
     useEffect(() => {
       baseStorageApi.get(key).then((val) => {
         if (val) {
           // @ts-expect-error
-          setStoredValue(val)
+          setStoredValue(val);
         }
-      })
+      });
     }, []);
 
     // Return a wrapped version of useState's setter function that ...
@@ -198,9 +203,9 @@ const useStorage = <StoredType>(storageType: storageBackend) => {
         console.error(error);
       }
     };
-    return [storedValue, setValue] as const
+    return [storedValue, setValue] as const;
   };
 };
 
-export const useSyncStorage = useStorage('sync')
-export const useLocalStorage = useStorage('local')
+export const useSyncStorage = useStorage("sync");
+export const useLocalStorage = useStorage("local");
