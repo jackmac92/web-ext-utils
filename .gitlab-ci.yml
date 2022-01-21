@@ -28,7 +28,11 @@ stages:
 confirm-before-semantic-release:
   before_script:
     - unset USE_DEFAULT_CONFIG
+    - ls -la npm-publish-dir
+    - whoami
 
 semantic-release:
   before_script:
     - unset USE_DEFAULT_CONFIG
+    - ls -la npm-publish-dir
+    - whoami
