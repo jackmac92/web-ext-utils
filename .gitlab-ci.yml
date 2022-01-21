@@ -26,9 +26,9 @@ stages:
   - meta
 
 confirm-before-semantic-release:
-  variables:
-    USE_DEFAULT_CONFIG:
+  before_script:
+    - unset USE_DEFAULT_CONFIG
 
 semantic-release:
-  variables:
-    USE_DEFAULT_CONFIG:
+  before_script:
+    - unset USE_DEFAULT_CONFIG
