@@ -3,6 +3,7 @@ import { mocked } from "ts-jest/utils";
 import browser from "webextension-polyfill";
 jest.mock("webextension-polyfill");
 
+// @ts-expect-error
 global.browser = mocked(browser, true);
 
 // @ts-expect-error
