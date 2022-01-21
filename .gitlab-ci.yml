@@ -24,3 +24,11 @@ stages:
   - build
   - publish
   - meta
+
+confirm-before-semantic-release:
+  variables:
+    USE_DEFAULT_CONFIG:
+
+semantic-release:
+  variables:
+    USE_DEFAULT_CONFIG:
