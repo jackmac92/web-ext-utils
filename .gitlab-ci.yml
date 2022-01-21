@@ -1,20 +1,22 @@
 include:
   - template: Code-Quality.gitlab-ci.yml
-  - project: 'quickstart-templates/ci-templates'
+  - project: "quickstart-templates/ci-templates"
     ref: master
-    file: 'node/pika-publish.yml'
-  - project: 'quickstart-templates/ci-templates'
+    file: "node/pika-publish.yml"
+  - project: "quickstart-templates/ci-templates"
     ref: master
-    file: 'node/meta.yml'
-  - project: 'quickstart-templates/ci-templates'
+    file: "node/meta.yml"
+  - project: "quickstart-templates/ci-templates"
     ref: master
-    file: 'node/dependencies.yml'
-  - project: 'quickstart-templates/ci-templates'
+    file: "node/dependencies.yml"
+  - project: "quickstart-templates/ci-templates"
     ref: master
-    file: 'node/typescript.yml'
-  - project: 'quickstart-templates/ci-templates'
+    file: "node/typescript.yml"
+  - project: "quickstart-templates/ci-templates"
     ref: master
-    file: 'node/core.yml'
+    file: "node/core.yml"
+
+image: jackzzz92/npm-project
 
 stages:
   - zero
