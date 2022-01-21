@@ -1,5 +1,5 @@
 import { textNotification } from "./notifications";
-import browser from 'webextension-polyfill';
+import browser from "webextension-polyfill";
 
 /**
  * @category clipboard
@@ -8,6 +8,7 @@ export function writeToClipboardViaNavigator(newClip: string): Promise<void> {
   // NB: not using this one since it just don't work for extensions :noidea:, getting an error that the dom is not focused
   return (
     navigator.permissions
+      // @ts-ignore
       .query({ name: "clipboard-write" })
       .then((result: { state: string }) => {
         if (result.state == "granted" || result.state == "prompt") {
